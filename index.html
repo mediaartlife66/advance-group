@@ -1,672 +1,739 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Advance Property Intelligence. Understand your property before requesting a professional painting quotation.">
-  <title>Advance Paint | Property Intelligence</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header class="nav">
-  <a href="#top" class="brand">
-    <span class="brand-mark">A</span>
-    <span>ADVANCE PAINT</span>
-  </a>
-
-  <a href="#how" class="nav-link">How it works</a>
-</header>
-
-
-<main id="top">
-
-<!-- HERO -->
-
-<section class="hero">
-
-  <div class="hero-copy">
-
-    <p class="eyebrow">ADVANCE PROPERTY INTELLIGENCE</p>
-
-    <h1>
-      Understand your property
-      <em>before</em>
-      you paint it.
-    </h1>
-
-    <p class="hero-text">
-      Upload your property photos, tell us what you want to achieve,
-      and receive an Advance Property Report before deciding whether
-      you want a professional quotation.
-    </p>
-
-    <a href="#assessment" class="button primary">
-      Start my property report
-      <span>→</span>
-    </a>
-
-    <div class="trust">
-      <span>●</span>
-      No account required · No price estimation
-    </div>
-
-  </div>
-
-
-  <div class="hero-visual">
-
-    <div class="house-card">
-
-      <div class="house-sky"></div>
-
-      <div class="house">
-
-        <div class="roof"></div>
-
-        <div class="facade">
-          <div class="window"></div>
-          <div class="window"></div>
-          <div class="door"></div>
-        </div>
-
-        <div class="ground"></div>
-
-      </div>
-
-      <div class="report-float">
-
-        <span class="mini-label">
-          ADVANCE PROPERTY REPORT
-        </span>
-
-        <strong>
-          Property intelligence
-        </strong>
-
-        <span class="status">
-          Report ready for review
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- HOW -->
-
-<section class="how" id="how">
-
-  <p class="eyebrow">A BETTER WAY TO START</p>
-
-  <h2>
-    Report first.
-    Quotation second.
-  </h2>
-
-  <div class="steps">
-
-    <article>
-      <span>01</span>
-      <h3>Show us the property</h3>
-      <p>
-        Enter the address and upload photographs
-        of the areas you want to understand.
-      </p>
-    </article>
-
-    <article>
-      <span>02</span>
-      <h3>Build your report</h3>
-      <p>
-        APA combines customer information,
-        visual observations and public property information.
-      </p>
-    </article>
-
-    <article>
-      <span>03</span>
-      <h3>Decide with confidence</h3>
-      <p>
-        Review the report first, then request a
-        professional quotation when you're ready.
-      </p>
-    </article>
-
-  </div>
-
-</section>
-
-
-<!-- ASSESSMENT -->
-
-<section class="assessment" id="assessment">
-
-  <div class="section-heading">
-
-    <p class="eyebrow">
-      STEP 01 · PROPERTY
-    </p>
-
-    <h2>
-      Let's start with what you know.
-    </h2>
-
-    <p>
-      Give us a few details about the property.
-      You can add more information later.
-    </p>
-
-  </div>
-
-
-  <form id="assessmentForm">
-
-    <div class="form-grid">
-
-      <label>
-        Property address
-
-        <input
-          id="address"
-          required
-          placeholder="e.g. 24 Example Street, Auckland"
-        >
-
-      </label>
-
-
-      <label>
-        What are you planning to paint?
-
-        <select id="scope">
-
-          <option>Exterior</option>
-          <option>Interior</option>
-          <option>Exterior & interior</option>
-          <option>Not sure yet</option>
-
-        </select>
-
-      </label>
-
-    </div>
-
-
-    <label>
-
-      What would you like help with?
-
-      <textarea
-        id="notes"
-        rows="4"
-        placeholder="Tell us what you're noticing, what you want to change, or what you're unsure about."
-      ></textarea>
-
-    </label>
-
-
-    <!-- PHOTO UPLOAD -->
-
-    <div class="upload">
-
-      <div class="upload-top">
-
-        <div class="upload-info">
-
-          <span class="upload-icon">+</span>
-
-          <div>
-
-            <strong>
-              Add property photos
-            </strong>
-
-            <p>
-              Front, rear, walls, trim or areas you're concerned about.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <button
-          type="button"
-          class="button secondary"
-          id="chooseBtn"
-        >
-          Choose photos
-        </button>
-
-      </div>
-
-
-      <input
-        id="photos"
-        type="file"
-        accept="image/*"
-        multiple
-        hidden
-      >
-
-
-      <div
-        id="preview"
-        class="preview"
-      ></div>
-
-    </div>
-
-
-    <button
-      class="button primary full"
-      type="submit"
-    >
-      Build my Property Report
-      <span>→</span>
-    </button>
-
-  </form>
-
-</section>
-
-
-<!-- REPORT -->
-
-<section
-  class="report hidden"
-  id="report"
->
-
-  <div class="report-header">
-
-    <div>
-
-      <p class="eyebrow">
-        ADVANCE PROPERTY REPORT
-      </p>
-
-      <h2>
-        Your property, understood.
-      </h2>
-
-      <p id="reportAddress"></p>
-
-    </div>
-
-
-    <div class="report-badge">
-      APA REPORT
-    </div>
-
-  </div>
-
-
-  <!-- REPORT SUMMARY -->
-
-  <div class="report-summary">
-
-    <div>
-      <span>PROJECT</span>
-      <strong id="reportScope">
-        Exterior
-      </strong>
-    </div>
-
-    <div>
-      <span>REPORT TYPE</span>
-      <strong>Initial property intelligence</strong>
-    </div>
-
-    <div>
-      <span>STATUS</span>
-      <strong>Ready for review</strong>
-    </div>
-
-  </div>
-
-
-  <div class="report-grid">
-
-
-    <!-- PUBLIC DATA -->
-
-    <article class="report-card">
-
-      <div class="source-badge verified">
-        VERIFIED PUBLIC DATA
-      </div>
-
-      <h3>
-        Property information
-      </h3>
-
-      <p>
-        This section is designed for verified information
-        retrieved from approved New Zealand public sources.
-      </p>
-
-      <div class="data-list">
-
-        <div>
-          <span>Address</span>
-          <strong id="dataAddress">
-            Awaiting property lookup
-          </strong>
-        </div>
-
-        <div>
-          <span>Property source</span>
-          <strong>
-            NZ public data connection
-          </strong>
-        </div>
-
-        <div>
-          <span>Data status</span>
-          <strong class="green">
-            Ready for integration
-          </strong>
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <!-- CUSTOMER -->
-
-    <article class="report-card">
-
-      <div class="source-badge customer">
-        CUSTOMER PROVIDED
-      </div>
-
-      <h3>
-        Your project
-      </h3>
-
-      <p id="customerNotes">
-        Your project information will appear here.
-      </p>
-
-      <div class="data-list">
-
-        <div>
-          <span>Painting scope</span>
-          <strong id="customerScope">
-            Exterior
-          </strong>
-        </div>
-
-        <div>
-          <span>Photos supplied</span>
-          <strong id="photoCount">
-            0
-          </strong>
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <!-- APA OBSERVATIONS -->
-
-    <article class="report-card large">
-
-      <div class="source-badge observation">
-        APA OBSERVATION
-      </div>
-
-      <h3>
-        Initial visual observations
-      </h3>
-
-      <p>
-        These observations are based on the information and
-        photographs supplied. They are not a substitute for
-        a professional site inspection.
-      </p>
-
-
-      <div class="observation-grid">
-
-        <div class="observation">
-          <span>01</span>
-          <strong>Surface condition</strong>
-          <p>
-            Visible surfaces should be reviewed for weathering,
-            peeling, cracking and coating condition.
-          </p>
-        </div>
-
-        <div class="observation">
-          <span>02</span>
-          <strong>Preparation</strong>
-          <p>
-            Areas showing deterioration may require additional
-            preparation before painting.
-          </p>
-        </div>
-
-        <div class="observation">
-          <span>03</span>
-          <strong>Access</strong>
-          <p>
-            Elevated or difficult-to-access areas may require
-            a professional assessment.
-          </p>
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <!-- COLOUR -->
-
-    <article class="report-card">
-
-      <div class="source-badge observation">
-        APA DIRECTION
-      </div>
-
-      <h3>
-        Colour direction
-      </h3>
-
-      <p>
-        A starting palette can be explored after the
-        property assessment.
-      </p>
-
-      <div class="swatches">
-
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-
-      </div>
-
-      <p>
-        Neutral body tones with considered contrast
-        for doors and trim.
-      </p>
-
-    </article>
-
-
-    <!-- PROFESSIONAL CHECK -->
-
-    <article class="report-card">
-
-      <div class="source-badge inspection">
-        PROFESSIONAL CHECK
-      </div>
-
-      <h3>
-        Things to inspect
-      </h3>
-
-      <ul>
-
-        <li>
-          Surface condition not visible in photographs
-        </li>
-
-        <li>
-          Moisture or substrate problems
-        </li>
-
-        <li>
-          Access and height requirements
-        </li>
-
-        <li>
-          Areas requiring physical inspection
-        </li>
-
-      </ul>
-
-    </article>
-
-
-    <!-- NEXT STEP -->
-
-    <article class="report-card large next-step">
-
-      <div class="source-badge next">
-        NEXT STEP
-      </div>
-
-      <h3>
-        Ready for a professional quotation?
-      </h3>
-
-      <p>
-        Your Property Report is a planning document.
-        It does not provide a price estimate.
-        If you would like Advance Paint to take the next step,
-        request a professional quotation.
-      </p>
-
-      <a
-        class="button primary"
-        href="#quote"
-      >
-        Request professional quotation
-        <span>→</span>
-      </a>
-
-    </article>
-
-
-  </div>
-
-</section>
-
-
-<!-- QUOTE -->
-
-<section
-  class="quote"
-  id="quote"
->
-
-  <div>
-
-    <p class="eyebrow">
-      STEP 03 · PROFESSIONAL QUOTATION
-    </p>
-
-    <h2>
-      Ready for Advance to take a closer look?
-    </h2>
-
-    <p>
-      We'll use your Property Report and supplied information
-      as the starting point for a professional quotation.
-    </p>
-
-  </div>
-
-
-  <form
-    class="quote-form"
-    id="quoteForm"
-  >
-
-    <input
-      id="quoteName"
-      required
-      placeholder="Your name"
-    >
-
-    <input
-      id="quoteEmail"
-      required
-      type="email"
-      placeholder="Email address"
-    >
-
-    <input
-      id="quotePhone"
-      placeholder="Phone number"
-    >
-
-    <button
-      class="button primary"
-      type="submit"
-    >
-      Request professional quotation
-      <span>→</span>
-    </button>
-
-  </form>
-
-
-  <div
-    class="success hidden"
-    id="success"
-  >
-
-    Your quotation request has been recorded for the next step.
-
-  </div>
-
-</section>
-
-
-</main>
-
-
-<footer>
-
-  <span>
-    ADVANCE PAINT
-  </span>
-
-  <span>
-    Property intelligence, made practical.
-  </span>
-
-</footer>
-
-
-<script src="app.js"></script>
-
-</body>
-</html>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f4f2ec;
+  color: #18221f;
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.55;
+}
+
+.nav {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6vw;
+  border-bottom: 1px solid #d9d7cf;
+  background: #f4f2ec;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #18221f;
+  font-weight: 700;
+  letter-spacing: .13em;
+  font-size: 12px;
+}
+
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: #183f35;
+  color: #f5f1e7;
+  border-radius: 50%;
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+}
+
+.nav-link {
+  color: #39443f;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.hero {
+  min-height: calc(100vh - 76px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5vw;
+  align-items: center;
+  padding: 8vw 7vw;
+  background: #e8e6dd;
+}
+
+.hero-copy {
+  max-width: 760px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: .16em;
+  font-weight: 700;
+  color: #547066;
+  margin: 0 0 18px;
+}
+
+.hero h1,
+h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.hero h1 {
+  font-size: clamp(48px, 6vw, 86px);
+}
+
+.hero h1 em {
+  color: #41685b;
+}
+
+.hero-text {
+  font-size: 18px;
+  max-width: 650px;
+  color: #4c5752;
+  margin: 28px 0 32px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  border: 0;
+  border-radius: 4px;
+  padding: 15px 21px;
+  font: 600 14px "DM Sans";
+  text-decoration: none;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.button.primary {
+  background: #183f35;
+  color: white;
+}
+
+.button.primary:hover {
+  background: #102f28;
+  transform: translateY(-1px);
+}
+
+.button.secondary {
+  background: white;
+  color: #183f35;
+  border: 1px solid #c8c9c1;
+}
+
+.trust {
+  font-size: 12px;
+  color: #66716c;
+  margin-top: 16px;
+}
+
+.trust span {
+  color: #658b78;
+  margin-right: 6px;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.house-card {
+  width: min(100%, 600px);
+  aspect-ratio: 1 / 1.08;
+  background: #c7d0c7;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 24px 70px #18221f18;
+}
+
+.house-sky {
+  height: 57%;
+  background: linear-gradient(145deg, #d8dfd9, #9eaea5);
+}
+
+.house {
+  position: absolute;
+  left: 12%;
+  right: 10%;
+  bottom: 0;
+  height: 58%;
+}
+
+.roof {
+  position: absolute;
+  top: 0;
+  left: -4%;
+  width: 108%;
+  height: 28%;
+  background: #36443f;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.facade {
+  position: absolute;
+  top: 21%;
+  left: 9%;
+  right: 9%;
+  bottom: 4%;
+  background: #d8d1c2;
+  border: 4px solid #bcb4a5;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.window {
+  width: 22%;
+  height: 32%;
+  background: #7b928e;
+  border: 7px solid #eee9de;
+}
+
+.door {
+  width: 18%;
+  height: 53%;
+  background: #40534e;
+  border: 6px solid #eee9de;
+}
+
+.ground {
+  position: absolute;
+  bottom: 0;
+  left: -10%;
+  width: 120%;
+  height: 10%;
+  background: #768779;
+}
+
+.report-float {
+  position: absolute;
+  left: 6%;
+  bottom: 7%;
+  background: white;
+  padding: 18px 20px;
+  width: 54%;
+  box-shadow: 0 14px 40px #18221f22;
+  display: grid;
+  gap: 4px;
+}
+
+.mini-label,
+.card-kicker {
+  font-size: 9px;
+  letter-spacing: .15em;
+  font-weight: 700;
+  color: #668077;
+}
+
+.report-float strong {
+  font-size: 16px;
+}
+
+.status {
+  font-size: 11px;
+  color: #7b5f35;
+}
+
+.how {
+  background: #183f35;
+  color: #eef1e9;
+  padding: 110px 7vw;
+}
+
+.how .eyebrow {
+  color: #9fb6aa;
+}
+
+.how h2,
+.assessment h2,
+.report h2,
+.quote h2 {
+  font-size: clamp(40px, 5vw, 68px);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+}
+
+.steps article {
+  padding: 32px;
+  border-top: 1px solid #70877e;
+}
+
+.steps span {
+  font-size: 12px;
+  color: #a9bdb4;
+}
+
+.steps h3 {
+  font-size: 21px;
+  margin: 45px 0 10px;
+}
+
+.steps p {
+  color: #c7d2cd;
+  max-width: 330px;
+}
+
+.assessment,
+.report,
+.quote {
+  padding: 110px 7vw;
+}
+
+.section-heading {
+  max-width: 720px;
+  margin-bottom: 55px;
+}
+
+.section-heading > p:last-child,
+.quote > div > p:last-child {
+  color: #65706b;
+}
+
+.assessment form {
+  max-width: 900px;
+  display: grid;
+  gap: 28px;
+}
+
+label {
+  font-size: 12px;
+  font-weight: 700;
+  display: grid;
+  gap: 9px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  font: 400 15px "DM Sans";
+  background: white;
+  border: 1px solid #d4d4cd;
+  border-radius: 3px;
+  padding: 15px;
+  color: #18221f;
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #557c6d;
+  box-shadow: 0 0 0 3px #557c6d18;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.upload {
+  background: #ebe9e1;
+  border: 1px dashed #aeb2aa;
+  padding: 22px;
+}
+
+.upload-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.upload-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.upload-top p {
+  font-size: 12px;
+  color: #66716c;
+  margin: 3px 0;
+}
+
+.upload-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #dce3dd;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  color: #315c4d;
+}
+
+.preview {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.preview img {
+  width: 110px;
+  height: 85px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.full {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* REPORT */
+
+.report {
+  background: #ebe9e1;
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: end;
+  margin-bottom: 35px;
+}
+
+.report-header > div:first-child {
+  max-width: 760px;
+}
+
+.report-header p:last-child {
+  color: #68726d;
+}
+
+.report-badge {
+  font-size: 9px;
+  letter-spacing: .12em;
+  font-weight: 700;
+  background: #d8e1da;
+  color: #315c4d;
+  padding: 8px 10px;
+  white-space: nowrap;
+}
+
+.report-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #183f35;
+  color: white;
+  margin-bottom: 18px;
+}
+
+.report-summary > div {
+  padding: 20px 24px;
+  border-right: 1px solid #49685e;
+}
+
+.report-summary span {
+  display: block;
+  font-size: 9px;
+  letter-spacing: .13em;
+  color: #a9bdb4;
+  margin-bottom: 7px;
+}
+
+.report-summary strong {
+  font-size: 14px;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.report-card {
+  background: #f7f6f1;
+  padding: 30px;
+  min-height: 280px;
+}
+
+.report-card.large {
+  grid-column: span 2;
+  min-height: auto;
+}
+
+.report-card h3 {
+  font: 500 30px "Playfair Display";
+  margin: 16px 0 10px;
+}
+
+.report-card p,
+.report-card li {
+  color: #59645f;
+  font-size: 14px;
+}
+
+.report-card ul {
+  padding-left: 18px;
+}
+
+.source-badge {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: .12em;
+  font-weight: 700;
+  padding: 7px 9px;
+}
+
+.verified {
+  background: #dcebdd;
+  color: #2f6548;
+}
+
+.customer {
+  background: #dde7ef;
+  color: #315d79;
+}
+
+.observation {
+  background: #eee2cc;
+  color: #7b6032;
+}
+
+.inspection {
+  background: #e8e4de;
+  color: #665d54;
+}
+
+.next {
+  background: #183f35;
+  color: white;
+}
+
+.data-list {
+  margin-top: 22px;
+  border-top: 1px solid #deddd5;
+}
+
+.data-list > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #deddd5;
+}
+
+.data-list span {
+  color: #737b76;
+  font-size: 12px;
+}
+
+.data-list strong {
+  font-size: 12px;
+  text-align: right;
+}
+
+.green {
+  color: #357052;
+}
+
+.observation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.observation {
+  background: #eeece5;
+  padding: 20px;
+}
+
+.observation > span {
+  font-size: 10px;
+  color: #7b806f;
+}
+
+.observation strong {
+  display: block;
+  margin: 18px 0 4px;
+}
+
+.observation p {
+  font-size: 12px;
+}
+
+.swatches {
+  display: flex;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.swatches i {
+  display: block;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #ded8ca;
+  border: 4px solid #f7f6f1;
+  box-shadow: 0 0 0 1px #c9c6bb;
+}
+
+.swatches i:nth-child(2) {
+  background: #b7b4a7;
+}
+
+.swatches i:nth-child(3) {
+  background: #7c877e;
+}
+
+.swatches i:nth-child(4) {
+  background: #3f514b;
+}
+
+.next-step {
+  background: #e0e7e0;
+}
+
+.next-step h3 {
+  max-width: 650px;
+}
+
+
+/* QUOTE */
+
+.quote {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: start;
+  background: #d9dfd7;
+}
+
+.quote-form {
+  display: grid;
+  gap: 12px;
+}
+
+.quote-form .button {
+  width: 100%;
+}
+
+.success {
+  grid-column: span 2;
+  background: #edf5ee;
+  padding: 18px;
+  color: #315c4d;
+}
+
+
+/* FOOTER */
+
+footer {
+  padding: 30px 7vw;
+  display: flex;
+  justify-content: space-between;
+  background: #122f28;
+  color: #dce5df;
+  font-size: 11px;
+  letter-spacing: .1em;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .nav {
+    padding: 0 5vw;
+  }
+
+  .nav-link {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 70px 5vw;
+  }
+
+  .hero-visual {
+    margin-top: 15px;
+  }
+
+  .how,
+  .assessment,
+  .report,
+  .quote {
+    padding: 80px 5vw;
+  }
+
+  .steps,
+  .form-grid,
+  .report-grid,
+  .quote,
+  .report-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .report-card.large,
+  .success {
+    grid-column: auto;
+  }
+
+  .report-summary > div {
+    border-right: 0;
+    border-bottom: 1px solid #49685e;
+  }
+
+  .report-header {
+    display: block;
+  }
+
+  .report-badge {
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+  .observation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .upload-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .upload-top .button {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 50px;
+  }
+
+  .hero-text {
+    font-size: 16px;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
