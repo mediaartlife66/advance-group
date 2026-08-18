@@ -6,11 +6,16 @@
 
   <title>Advance Paint | Property Intelligence</title>
 
+  <meta
+    name="description"
+    content="Advance Paint property intelligence for smarter painting projects."
+  >
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
 
@@ -19,736 +24,138 @@
 
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
 
-  <nav class="nav">
+      <a href="#" class="logo">
+        ADVANCE PAINT
+      </a>
 
-    <a class="brand" href="#">
-      <span class="brand-mark">A</span>
-      <span>ADVANCE PAINT</span>
-    </a>
+      <span class="header-label">
+        PROPERTY INTELLIGENCE
+      </span>
 
-    <a class="nav-link" href="#how">
-      How it works
-    </a>
-
-  </nav>
+    </div>
+  </header>
 
 
+  <!-- MAIN -->
   <main>
 
     <!-- HERO -->
-
     <section class="hero">
-
-      <div class="hero-copy">
+      <div class="container hero-content">
 
         <p class="eyebrow">
-          PROPERTY INTELLIGENCE · NEW ZEALAND
+          AI PROPERTY REPORT
         </p>
 
         <h1>
-          Understand your property
-          <em>before</em>
-          you paint it.
+          Know the property<br>
+          before you paint it.
         </h1>
 
         <p class="hero-text">
-          Upload a few photos and tell us about your project.
-          Advance builds a clear Property Report before you decide
-          whether to request a professional quotation.
+          Advance Paint combines property information,
+          public data and AI to help create a clearer
+          picture of every painting project.
         </p>
 
-        <a class="button primary" href="#assessment">
-          Start your property report →
+        <a href="#report" class="button primary">
+          Get your property report →
         </a>
 
-        <p class="trust">
-          <span>●</span>
-          No account required
-        </p>
-
       </div>
-
-
-      <!-- HERO VISUAL -->
-
-      <div class="hero-visual">
-
-        <div class="house-card">
-
-          <div class="house-sky"></div>
-
-          <div class="house">
-
-            <div class="roof"></div>
-
-            <div class="facade">
-
-              <div class="window"></div>
-
-              <div class="window"></div>
-
-              <div class="door"></div>
-
-            </div>
-
-            <div class="ground"></div>
-
-          </div>
-
-
-          <div class="report-float">
-
-            <span class="mini-label">
-              ADVANCE PROPERTY REPORT
-            </span>
-
-            <strong>
-              Exterior condition
-            </strong>
-
-            <span class="status">
-              Further inspection recommended
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
     </section>
 
 
-    <!-- HOW IT WORKS -->
+    <!-- REPORT -->
+    <section id="report" class="report-section">
 
-    <section id="how" class="how">
+      <div class="container">
 
-      <p class="eyebrow">
-        A BETTER WAY TO START
-      </p>
-
-      <h2>
-        Report first. Quotation second.
-      </h2>
-
-
-      <div class="steps">
-
-        <article>
-
-          <span>01</span>
-
-          <h3>
-            Show us the property
-          </h3>
-
-          <p>
-            Upload photos and give us the address.
-          </p>
-
-        </article>
-
-
-        <article>
-
-          <span>02</span>
-
-          <h3>
-            Build your report
-          </h3>
-
-          <p>
-            APA combines your information, visual observations
-            and relevant public data.
-          </p>
-
-        </article>
-
-
-        <article>
-
-          <span>03</span>
-
-          <h3>
-            Decide with confidence
-          </h3>
-
-          <p>
-            Read the report first, then request a professional
-            quotation.
-          </p>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- PROPERTY ASSESSMENT -->
-
-    <section id="assessment" class="assessment">
-
-      <div class="section-heading">
-
-        <p class="eyebrow">
-          STEP 01 · PROPERTY
-        </p>
-
-        <h2>
-          Let's start with what you know.
-        </h2>
-
-        <p>
-          A few details help us make the report useful.
-        </p>
-
-      </div>
-
-
-      <form id="assessmentForm">
-
-        <!-- ADDRESS + SCOPE -->
-
-        <div class="form-grid">
-
-          <label>
-            Property address
-
-            <input
-              id="address"
-              type="text"
-              required
-              placeholder="24 Example Street, Auckland"
-            >
-
-          </label>
-
-
-          <label>
-            What are you planning to paint?
-
-            <select id="scope">
-
-              <option>Exterior</option>
-
-              <option>Interior</option>
-
-              <option>Exterior & interior</option>
-
-              <option>Not sure yet</option>
-
-            </select>
-
-          </label>
-
-        </div>
-
-
-        <!-- NOTES -->
-
-        <label>
-          What would you like help with?
-
-          <textarea
-            id="notes"
-            rows="5"
-            placeholder="Tell us what you're noticing or what you'd like to change."
-          ></textarea>
-
-        </label>
-
-
-        <!-- PHOTO UPLOAD -->
-
-        <div class="upload">
-
-          <div class="upload-top">
-
-            <div class="upload-info">
-
-              <div class="upload-icon">
-                ↑
-              </div>
-
-              <div>
-
-                <strong>
-                  Add property photos
-                </strong>
-
-                <p>
-                  Front, rear, walls, trim or areas you're concerned about.
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <button
-              class="button secondary"
-              type="button"
-              id="chooseBtn"
-            >
-              Choose photos
-            </button>
-
-          </div>
-
-
-          <input
-            id="photos"
-            type="file"
-            accept="image/*"
-            multiple
-            hidden
-          >
-
-
-          <div
-            id="preview"
-            class="preview"
-          ></div>
-
-        </div>
-
-
-        <!-- SUBMIT -->
-
-        <button
-          class="button primary full"
-          type="submit"
-        >
-          Create my Property Report →
-        </button>
-
-      </form>
-
-    </section>
-
-
-    <!-- PROPERTY REPORT -->
-
-    <section
-      id="report"
-      class="report hidden"
-    >
-
-      <div class="report-header">
-
-        <div>
+        <div class="section-heading">
 
           <p class="eyebrow">
-            ADVANCE PROPERTY REPORT · PREVIEW
+            START HERE
           </p>
 
           <h2>
-            Your property, understood.
+            Tell us about the property
           </h2>
 
-          <p id="reportAddress">
+          <p>
+            Enter the property address and we'll prepare
+            the information needed for the next step.
+          </p>
+
+        </div>
+
+
+        <form id="propertyForm" class="property-form">
+
+          <label for="propertyAddress">
             Property address
-          </p>
 
-        </div>
-
-
-        <span class="report-badge">
-          INITIAL ASSESSMENT
-        </span>
-
-      </div>
-
-
-      <!-- REPORT SUMMARY -->
-
-      <div class="report-summary">
-
-        <div>
-
-          <span>
-            PROPERTY
-          </span>
-
-          <strong id="dataAddress">
-            Awaiting property lookup
-          </strong>
-
-        </div>
-
-
-        <div>
-
-          <span>
-            PROJECT SCOPE
-          </span>
-
-          <strong id="reportScope">
-            Exterior
-          </strong>
-
-        </div>
-
-
-        <div>
-
-          <span>
-            PHOTOS PROVIDED
-          </span>
-
-          <strong id="photoCount">
-            0
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <!-- REPORT CARDS -->
-
-      <div class="report-grid">
-
-
-        <!-- CUSTOMER INFORMATION -->
-
-        <article class="report-card">
-
-          <span class="source-badge customer">
-            CUSTOMER INPUT
-          </span>
-
-          <h3>
-            Project brief
-          </h3>
-
-          <div class="data-list">
-
-            <div>
-
-              <span>
-                Scope
-              </span>
-
-              <strong id="customerScope">
-                Exterior
-              </strong>
-
-            </div>
-
-            <div>
-
-              <span>
-                Photos
-              </span>
-
-              <strong id="photoCountSummary">
-                Provided
-              </strong>
-
-            </div>
-
-          </div>
-
-          <p id="customerNotes">
-            No additional project notes were provided.
-          </p>
-
-        </article>
-
-
-        <!-- PROPERTY DATA -->
-
-        <article class="report-card">
-
-          <span class="source-badge verified">
-            PUBLIC DATA
-          </span>
-
-          <h3>
-            Property information
-          </h3>
-
-          <p>
-            Approved New Zealand public property data can be connected
-            to this report through the future APA data layer.
-          </p>
-
-          <div class="data-list">
-
-            <div>
-
-              <span>
-                Address
-              </span>
-
-              <strong>
-                <span id="dataAddressSecondary">
-                  Awaiting lookup
-                </span>
-              </strong>
-
-            </div>
-
-            <div>
-
-              <span>
-                Verification
-              </span>
-
-              <strong class="green">
-                Pending
-              </strong>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- VISUAL OBSERVATIONS -->
-
-        <article class="report-card large">
-
-          <span class="source-badge observation">
-            INITIAL OBSERVATION
-          </span>
-
-          <h3>
-            Areas to inspect
-          </h3>
-
-          <p>
-            These are planning observations only. Photographs cannot
-            confirm every property condition.
-          </p>
-
-
-          <div class="observation-grid">
-
-            <div class="observation">
-
-              <span>
-                01
-              </span>
-
-              <strong>
-                Surface weathering
-              </strong>
-
-              <p>
-                Review visible surface condition and existing coating.
-              </p>
-
-            </div>
-
-
-            <div class="observation">
-
-              <span>
-                02
-              </span>
-
-              <strong>
-                Trim & joins
-              </strong>
-
-              <p>
-                Inspect edges, joins, trims and exposed details.
-              </p>
-
-            </div>
-
-
-            <div class="observation">
-
-              <span>
-                03
-              </span>
-
-              <strong>
-                Existing coating
-              </strong>
-
-              <p>
-                Further inspection may be required before preparation.
-              </p>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- COLOUR DIRECTION -->
-
-        <article class="report-card">
-
-          <span class="source-badge inspection">
-            COLOUR DIRECTION
-          </span>
-
-          <h3>
-            Calm, durable palette
-          </h3>
-
-
-          <div class="swatches">
-
-            <i></i>
-            <i></i>
-            <i></i>
-            <i></i>
-
-          </div>
-
-
-          <p>
-            Neutral body tones with considered contrast for doors
-            and trim.
-          </p>
-
-        </article>
-
-
-        <!-- INSPECTION -->
-
-        <article class="report-card">
-
-          <span class="source-badge inspection">
-            PROFESSIONAL REVIEW
-          </span>
-
-          <h3>
-            Inspection required
-          </h3>
-
-          <p>
-            A professional inspection may identify conditions that
-            photographs cannot confirm.
-          </p>
-
-        </article>
-
-
-        <!-- NEXT STEP -->
-
-        <article class="report-card large next-step">
-
-          <span class="source-badge next">
-            RECOMMENDED NEXT STEP
-          </span>
-
-          <h3>
-            Request a professional quotation
-          </h3>
-
-          <p>
-            Your report is not a price estimate. Advance Paint can
-            review the property information and prepare a professional
-            quotation.
-          </p>
-
-          <a
+            <input
+              id="propertyAddress"
+              name="propertyAddress"
+              type="text"
+              placeholder="Enter property address"
+              autocomplete="street-address"
+              required
+            >
+          </label>
+
+
+          <label for="quoteName">
+            Your name
+
+            <input
+              id="quoteName"
+              name="quoteName"
+              type="text"
+              placeholder="Your name"
+              autocomplete="name"
+              required
+            >
+          </label>
+
+
+          <label for="quotePhone">
+            Phone number
+
+            <input
+              id="quotePhone"
+              name="quotePhone"
+              type="tel"
+              placeholder="Phone number"
+              autocomplete="tel"
+              required
+            >
+          </label>
+
+
+          <button
             class="button primary"
-            href="#quote"
+            type="submit"
           >
-            Request quotation →
-          </a>
+            Request professional quotation →
+          </button>
 
-        </article>
-
-      </div>
-
-    </section>
+        </form>
 
 
-    <!-- QUOTATION -->
-
-    <section id="quote" class="quote">
-
-      <div>
-
-        <p class="eyebrow">
-          STEP 03 · QUOTATION
-        </p>
-
-        <h2>
-          Ready for Advance to take a closer look?
-        </h2>
-
-        <p>
-          We'll use your report as the starting point for a
-          professional quotation.
-        </p>
-
-      </div>
-
-
-      <form
-        id="quoteForm"
-        class="quote-form"
-      >
-
-        <label>
-          Your name
-
-          <input
-            id="quoteName"
-            type="text"
-            required
-            placeholder="Your name"
-          >
-
-        </label>
-
-
-        <label>
-          Email address
-
-          <input
-            id="quoteEmail"
-            type="email"
-            required
-            placeholder="Email address"
-          >
-
-        </label>
-
-
-        <label>
-          Phone number
-
-          <input
-            id="quotePhone"
-            type="tel"
-            placeholder="Phone number"
-          >
-
-        </label>
-
-
-        <button
-          class="button primary"
-          type="submit"
+        <p
+          id="success"
+          class="hidden success"
         >
-          Request professional quotation →
-        </button>
+          Thanks. Your quotation request has been recorded
+          for the next step.
+        </p>
 
-      </form>
-
-
-      <p
-        id="success"
-        class="hidden success"
-      >
-        Thanks. Your quotation request has been recorded for the next step.
-      </p>
+      </div>
 
     </section>
 
@@ -756,22 +163,22 @@
 
 
   <!-- FOOTER -->
-
   <footer>
+    <div class="container footer-inner">
 
-    <span>
-      ADVANCE PAINT
-    </span>
+      <span>
+        ADVANCE PAINT
+      </span>
 
-    <span>
-      Property intelligence, made practical.
-    </span>
+      <span>
+        Property intelligence, made practical.
+      </span>
 
+    </div>
   </footer>
 
 
   <!-- JAVASCRIPT -->
-
   <script src="app.js"></script>
 
 </body>
