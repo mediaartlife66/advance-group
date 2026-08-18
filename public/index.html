@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Advance Paint | Property Intelligence</title>
+
+  <meta
+    name="description"
+    content="Advance Paint property intelligence for smarter painting projects."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="#" class="logo">
+        ADVANCE PAINT
+      </a>
+
+      <span class="header-label">
+        PROPERTY INTELLIGENCE
+      </span>
+
+    </div>
+  </header>
+
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="container hero-content">
+
+        <p class="eyebrow">
+          AI PROPERTY REPORT
+        </p>
+
+        <h1>
+          Know the property<br>
+          before you paint it.
+        </h1>
+
+        <p class="hero-text">
+          Advance Paint combines property information,
+          public data and AI to create a clearer picture
+          of every painting project.
+        </p>
+
+        <a href="#report" class="button primary">
+          Get your property report →
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROPERTY REPORT -->
+    <section id="report" class="report-section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">
+            STEP 1
+          </p>
+
+          <h2>
+            Start with the property
+          </h2>
+
+          <p>
+            Enter the property address and we'll prepare
+            the information needed for your property report.
+          </p>
+
+        </div>
+
+
+        <!-- ADDRESS FORM -->
+        <form id="propertyForm" class="property-form">
+
+          <label for="propertyAddress">
+            Property address
+
+            <input
+              id="propertyAddress"
+              name="propertyAddress"
+              type="text"
+              placeholder="Enter property address"
+              autocomplete="street-address"
+              required
+            >
+          </label>
+
+
+          <button
+            class="button primary"
+            type="submit"
+          >
+            Analyse this property →
+          </button>
+
+        </form>
+
+
+        <!-- PROPERTY REPORT -->
+        <section
+          id="propertyReport"
+          class="property-report hidden"
+        >
+
+          <p class="eyebrow">
+            PROPERTY REPORT
+          </p>
+
+          <h2>
+            Property information
+          </h2>
+
+          <div class="report-card">
+
+            <div class="report-row">
+              <span>Address</span>
+              <strong id="reportAddress">
+                Awaiting property address
+              </strong>
+            </div>
+
+            <div class="report-row">
+              <span>Property status</span>
+              <strong id="reportStatus">
+                Initial property assessment
+              </strong>
+            </div>
+
+            <div class="report-row">
+              <span>Data sources</span>
+              <strong id="reportSources">
+                Public NZ property information
+              </strong>
+            </div>
+
+          </div>
+
+
+          <p class="report-note">
+            This is the beginning of the Advance Paint
+            property intelligence process. Public property
+            and council data will be connected here in the
+            next development stage.
+          </p>
+
+
+          <!-- QUOTE REQUEST -->
+          <div class="quote-section">
+
+            <p class="eyebrow">
+              NEXT STEP
+            </p>
+
+            <h3>
+              Would you like a professional quotation?
+            </h3>
+
+            <form id="quoteForm">
+
+              <label for="quoteName">
+                Your name
+
+                <input
+                  id="quoteName"
+                  name="quoteName"
+                  type="text"
+                  placeholder="Your name"
+                  autocomplete="name"
+                  required
+                >
+              </label>
+
+
+              <label for="quotePhone">
+                Phone number
+
+                <input
+                  id="quotePhone"
+                  name="quotePhone"
+                  type="tel"
+                  placeholder="Phone number"
+                  autocomplete="tel"
+                  required
+                >
+              </label>
+
+
+              <button
+                class="button primary"
+                type="submit"
+              >
+                Request professional quotation →
+              </button>
+
+            </form>
+
+
+            <p
+              id="success"
+              class="hidden success"
+            >
+              Thanks. Your quotation request has been recorded
+              for the next step.
+            </p>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="container footer-inner">
+
+      <span>
+        ADVANCE PAINT
+      </span>
+
+      <span>
+        Property intelligence, made practical.
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+  <script src="app.js"></script>
+
+</body>
+</html>
