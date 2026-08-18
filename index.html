@@ -45,6 +45,7 @@
 
     <!-- HERO -->
     <section class="hero">
+
       <div class="container hero-content">
 
         <p class="eyebrow">
@@ -58,8 +59,8 @@
 
         <p class="hero-text">
           Advance Paint combines property information,
-          public data and AI to help create a clearer
-          picture of every painting project.
+          public data and AI to create a clearer picture
+          of every painting project.
         </p>
 
         <a href="#report" class="button primary">
@@ -67,10 +68,11 @@
         </a>
 
       </div>
+
     </section>
 
 
-    <!-- REPORT -->
+    <!-- PROPERTY REPORT -->
     <section id="report" class="report-section">
 
       <div class="container">
@@ -78,21 +80,22 @@
         <div class="section-heading">
 
           <p class="eyebrow">
-            START HERE
+            STEP 1
           </p>
 
           <h2>
-            Tell us about the property
+            Start with the property
           </h2>
 
           <p>
             Enter the property address and we'll prepare
-            the information needed for the next step.
+            the information needed for your property report.
           </p>
 
         </div>
 
 
+        <!-- ADDRESS FORM -->
         <form id="propertyForm" class="property-form">
 
           <label for="propertyAddress">
@@ -109,51 +112,126 @@
           </label>
 
 
-          <label for="quoteName">
-            Your name
-
-            <input
-              id="quoteName"
-              name="quoteName"
-              type="text"
-              placeholder="Your name"
-              autocomplete="name"
-              required
-            >
-          </label>
-
-
-          <label for="quotePhone">
-            Phone number
-
-            <input
-              id="quotePhone"
-              name="quotePhone"
-              type="tel"
-              placeholder="Phone number"
-              autocomplete="tel"
-              required
-            >
-          </label>
-
-
           <button
             class="button primary"
             type="submit"
           >
-            Request professional quotation →
+            Analyse this property →
           </button>
 
         </form>
 
 
-        <p
-          id="success"
-          class="hidden success"
+        <!-- PROPERTY REPORT -->
+        <section
+          id="propertyReport"
+          class="property-report hidden"
         >
-          Thanks. Your quotation request has been recorded
-          for the next step.
-        </p>
+
+          <p class="eyebrow">
+            PROPERTY REPORT
+          </p>
+
+          <h2>
+            Property information
+          </h2>
+
+          <div class="report-card">
+
+            <div class="report-row">
+              <span>Address</span>
+              <strong id="reportAddress">
+                Awaiting property address
+              </strong>
+            </div>
+
+            <div class="report-row">
+              <span>Property status</span>
+              <strong id="reportStatus">
+                Initial property assessment
+              </strong>
+            </div>
+
+            <div class="report-row">
+              <span>Data sources</span>
+              <strong id="reportSources">
+                Public NZ property information
+              </strong>
+            </div>
+
+          </div>
+
+
+          <p class="report-note">
+            This is the beginning of the Advance Paint
+            property intelligence process. Public property
+            and council data will be connected here in the
+            next development stage.
+          </p>
+
+
+          <!-- QUOTE REQUEST -->
+          <div class="quote-section">
+
+            <p class="eyebrow">
+              NEXT STEP
+            </p>
+
+            <h3>
+              Would you like a professional quotation?
+            </h3>
+
+            <form id="quoteForm">
+
+              <label for="quoteName">
+                Your name
+
+                <input
+                  id="quoteName"
+                  name="quoteName"
+                  type="text"
+                  placeholder="Your name"
+                  autocomplete="name"
+                  required
+                >
+              </label>
+
+
+              <label for="quotePhone">
+                Phone number
+
+                <input
+                  id="quotePhone"
+                  name="quotePhone"
+                  type="tel"
+                  placeholder="Phone number"
+                  autocomplete="tel"
+                  required
+                >
+              </label>
+
+
+              <button
+                class="button primary"
+                type="submit"
+              >
+                Request professional quotation →
+              </button>
+
+            </form>
+
+
+            <p
+              id="success"
+              class="hidden success"
+            >
+              Thanks. Your quotation request has been recorded
+              for the next step.
+            </p>
+
+          </div>
+
+        </section>
 
       </div>
 
@@ -164,6 +242,7 @@
 
   <!-- FOOTER -->
   <footer>
+
     <div class="container footer-inner">
 
       <span>
@@ -175,6 +254,7 @@
       </span>
 
     </div>
+
   </footer>
 
 
