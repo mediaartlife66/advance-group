@@ -37,3 +37,5 @@ is not yet transferred to the project owner — see internal notes.
 
 ## Contributing
 See `CONTRIBUTING.md`.
+
+_Last verified: 2026-08-19_
