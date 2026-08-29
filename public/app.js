@@ -1,3 +1,5 @@
+import { createProperty } from "./property-intelligence.js";
+
 const propertyForm = document.getElementById("propertyForm");
 const propertyReport = document.getElementById("propertyReport");
 
@@ -7,7 +9,7 @@ const reportSources = document.getElementById("reportSources");
 
 const quoteForm = document.getElementById("quoteForm");
 const success = document.getElementById("success");
-
+let currentProperty = null;
 
 /*
 --------------------------------------------------
@@ -132,16 +134,21 @@ if (document.modelContext) {
 
       const form =
         document.getElementById("propertyForm");
-
+      currentProperty = createProperty(address);
+      console.log(
+        "Advance Paint Property Intelligence:",
+        currentProperty
+      );
       if (form) {
         form.requestSubmit();
       }
 
       return {
-        success: true,
-        message:
-          `Property report started for ${address}.`
-      };
+  success: true,
+  message:
+    `Property report started for ${address}.`,
+  property: currentProperty
+};
     }
 
   });
