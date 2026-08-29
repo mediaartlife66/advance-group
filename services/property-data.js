@@ -1,13 +1,12 @@
-import { createProperty } from "../data/property.js";
+import { getNZPropertyData } from "./nz-property-data.js";
 
 export async function getPropertyData(address) {
-  const property = createProperty(address);
+  const nzData = await getNZPropertyData(address);
 
-  property.sources.push({
-    name: "Property Data Service",
-    type: "internal",
-    status: "connected"
-  });
-
-  return property;
+  return {
+    address,
+    sources: [nzData.source],
+    data: nzData.data,
+    status: nzData.source.status
+  };
 }
