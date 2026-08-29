@@ -151,6 +151,7 @@ if (document.modelContext) {
     "get_property_report"
   );
 }
+/*
 --------------------------------------------------
 FUTURE PROPERTY INTELLIGENCE DATA LAYER
 --------------------------------------------------
