@@ -94,76 +94,63 @@ WEBMCP PROPERTY REPORT TOOL
 --------------------------------------------------
 */
 
-if ("modelContext" in navigator && navigator.modelContext) {
+if (document.modelContext) {
 
-  navigator.modelContext.provideContext({
+  document.modelContext.registerTool({
 
-    tools: [
+    name: "get_property_report",
 
-      {
-        name: "get_property_report",
+    description:
+      "Start an Advance Paint property report using a property address.",
 
-        description:
-          "Start an Advance Paint property report using a property address.",
+    inputSchema: {
+      type: "object",
 
-        inputSchema: {
-
-          type: "object",
-
-          properties: {
-
-            address: {
-              type: "string",
-              description: "The property address to analyse."
-            }
-
-          },
-
-          required: ["address"]
-
-        },
-
-        execute: async ({ address }) => {
-
-          const addressInput =
-            document.getElementById("propertyAddress");
-
-          if (!addressInput) {
-
-            return {
-              success: false,
-              error: "Property address field was not found."
-            };
-
-          }
-
-          addressInput.value = address;
-
-          const form =
-            document.getElementById("propertyForm");
-
-          if (form) {
-            form.requestSubmit();
-          }
-
-          return {
-            success: true,
-            message:
-              `Property report started for ${address}.`
-          };
-
+      properties: {
+        address: {
+          type: "string",
+          description: "The property address to analyse."
         }
+      },
 
+      required: ["address"]
+    },
+
+    execute: async ({ address }) => {
+
+      const addressInput =
+        document.getElementById("propertyAddress");
+
+      if (!addressInput) {
+        return {
+          success: false,
+          error: "Property address field was not found."
+        };
       }
 
-    ]
+      addressInput.value = address;
+
+      const form =
+        document.getElementById("propertyForm");
+
+      if (form) {
+        form.requestSubmit();
+      }
+
+      return {
+        success: true,
+        message:
+          `Property report started for ${address}.`
+      };
+    }
 
   });
 
+  console.log(
+    "Advance Paint WebMCP tool registered:",
+    "get_property_report"
+  );
 }
-
-
-/*
 --------------------------------------------------
 FUTURE PROPERTY INTELLIGENCE DATA LAYER
 --------------------------------------------------
