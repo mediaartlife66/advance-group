@@ -90,6 +90,43 @@ if (quoteForm) {
 
 /*
 --------------------------------------------------
+WEBMCP PROPERTY REPORT TOOL
+--------------------------------------------------
+*/
+
+if ("modelContext" in document && document.modelContext) {
+  document.modelContext.registerTool({
+    name: "get_property_report",
+    description:
+      "Start an Advance Paint property report using a property address.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        address: {
+          type: "string",
+          description: "The property address to analyse."
+        }
+      },
+      required: ["address"]
+    },
+    execute: async ({ address }) => {
+      const addressInput =
+        document.getElementById("propertyAddress");
+
+      if (!addressInput) {
+        return "Property address field was not found.";
+      }
+
+      addressInput.value = address;
+
+      propertyForm.requestSubmit();
+
+      return `Property report started for ${address}.`;
+    }
+  });
+}
+
+--------------------------------------------------
 FUTURE PROPERTY INTELLIGENCE DATA LAYER
 --------------------------------------------------
 
