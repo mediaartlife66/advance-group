@@ -117,4 +117,54 @@ inside this browser file.
 Future external APIs should be connected
 through worker.js / server-side functions.
 --------------------------------------------------
+*//*
+--------------------------------------------------
+WEBMCP
+--------------------------------------------------
 */
+
+if ("modelContext" in navigator) {
+  navigator.modelContext.provideContext({
+    tools: [
+      {
+        name: "get_property_report",
+        description:
+          "Start a property report for an address on Advance Paint.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            address: {
+              type: "string",
+              description: "The property address to analyse."
+            }
+          },
+          required: ["address"]
+        },
+        execute: async ({ address }) => {
+          const addressInput =
+            document.getElementById("propertyAddress");
+
+          if (!addressInput) {
+            return {
+              success: false,
+              error: "Property address field not found."
+            };
+          }
+
+          addressInput.value = address;
+
+          const form = document.getElementById("propertyForm");
+
+          if (form) {
+            form.requestSubmit();
+          }
+
+          return {
+            success: true,
+            message: `Property report started for ${address}.`
+          };
+        }
+      }
+    ]
+  });
+}
