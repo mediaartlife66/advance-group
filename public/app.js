@@ -1,5 +1,7 @@
 import { createProperty } from "./property-intelligence.js";
 
+let currentProperty = null;
+
 const propertyForm = document.getElementById("propertyForm");
 const propertyReport = document.getElementById("propertyReport");
 
@@ -9,7 +11,7 @@ const reportSources = document.getElementById("reportSources");
 
 const quoteForm = document.getElementById("quoteForm");
 const success = document.getElementById("success");
-let currentProperty = null;
+
 
 /*
 --------------------------------------------------
@@ -120,6 +122,15 @@ if (document.modelContext) {
 
     execute: async ({ address }) => {
 
+      const cleanAddress = String(address || "").trim();
+
+      if (!cleanAddress) {
+        return {
+          success: false,
+          error: "Property address is required."
+        };
+      }
+
       const addressInput =
         document.getElementById("propertyAddress");
 
@@ -130,25 +141,129 @@ if (document.modelContext) {
         };
       }
 
-      addressInput.value = address;
+      /*
+      --------------------------------------------------
+      CREATE LOCAL PROPERTY PROFILE
+      --------------------------------------------------
+      */
 
-      const form =
-        document.getElementById("propertyForm");
-      currentProperty = createProperty(address);
+      addressInput.value = cleanAddress;
+
+      currentProperty = createProperty(cleanAddress);
+
       console.log(
         "Advance Paint Property Intelligence:",
         currentProperty
       );
+
+
+      /*
+      --------------------------------------------------
+      START UI PROPERTY REPORT
+      --------------------------------------------------
+      */
+
+      const form =
+        document.getElementById("propertyForm");
+
       if (form) {
         form.requestSubmit();
       }
 
-      return {
-  success: true,
-  message:
-    `Property report started for ${address}.`,
-  property: currentProperty
-};
+
+      /*
+      --------------------------------------------------
+      CALL CLOUDFLARE WORKER
+      --------------------------------------------------
+      */
+
+      try {
+
+        const response = await fetch(
+          "/api/property-report",
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+              address: cleanAddress
+            })
+          }
+        );
+
+        const propertyReport =
+          await response.json();
+
+        console.log(
+          "Advance Paint Worker Property Report:",
+          propertyReport
+        );
+
+
+        /*
+        --------------------------------------------------
+        WORKER ERROR
+        --------------------------------------------------
+        */
+
+        if (!response.ok) {
+
+          return {
+            success: false,
+            address: cleanAddress,
+            error:
+              propertyReport.error ||
+              "Property report request failed."
+          };
+
+        }
+
+
+        /*
+        --------------------------------------------------
+        SUCCESS
+        --------------------------------------------------
+        */
+
+        return {
+          success: true,
+
+          address: cleanAddress,
+
+          status:
+            propertyReport.status,
+
+          propertyId:
+            currentProperty.id,
+
+          workerReport:
+            propertyReport,
+
+          message:
+            `Property report started for ${cleanAddress}.`
+        };
+
+      } catch (error) {
+
+        console.error(
+          "Advance Paint Worker error:",
+          error
+        );
+
+        return {
+          success: false,
+
+          address: cleanAddress,
+
+          error:
+            "Unable to connect to the property intelligence service."
+        };
+
+      }
+
     }
 
   });
@@ -157,7 +272,10 @@ if (document.modelContext) {
     "Advance Paint WebMCP tool registered:",
     "get_property_report"
   );
+
 }
+
+
 /*
 --------------------------------------------------
 FUTURE PROPERTY INTELLIGENCE DATA LAYER
