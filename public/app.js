@@ -83,12 +83,72 @@ if (propertyForm) {
           : "Property address requires verification";
 
       reportSources.textContent =
-        result.data?.addressFound
+        result.status === "connected"
           ? "LINZ property data connected"
           : "NZ property data searched";
 
-      currentProperty = result;
+      const linzReport =
+        document.getElementById("linzReport");
 
+      const propertyData =
+        result.data || {};
+
+      const parcelFeature =
+        propertyData.parcel?.features?.[0];
+
+      const parcelFeatures =
+  result.data.parcel.features || [];
+
+const parcel =
+  parcelFeatures
+    .map(feature => feature.properties || {})
+    .find(parcel =>
+      parcel.parcel_intent !== "Road" &&
+      (
+        parcel.appellation ||
+        parcel.titles ||
+        parcel.survey_area ||
+        parcel.calc_area
+      )
+    ) || {};
+      const coordinates =
+        propertyData.address?.coordinates || {};
+
+      if (linzReport) {
+
+        document.getElementById("reportParcel").textContent =
+          parcel.appellation || "Not available";
+
+        document.getElementById("reportTitle").textContent =
+          parcel.titles || "Not available";
+
+        document.getElementById("reportSurveyArea").textContent =
+          parcel.survey_area != null
+            ? `${parcel.survey_area} m²`
+            : "Not available";
+
+        document.getElementById("reportCalcArea").textContent =
+          parcel.calc_area != null
+            ? `${parcel.calc_area} m²`
+            : "Not available";
+
+        document.getElementById("reportLandDistrict").textContent =
+          parcel.land_district || "Not available";
+
+        document.getElementById("reportLatitude").textContent =
+          coordinates.latitude != null
+            ? coordinates.latitude
+            : "Not available";
+
+        document.getElementById("reportLongitude").textContent =
+          coordinates.longitude != null
+            ? coordinates.longitude
+            : "Not available";
+
+        linzReport.classList.remove("hidden");
+      }
+
+      currentProperty = result;
     } catch (error) {
 
       console.error(
