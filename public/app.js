@@ -20,7 +20,7 @@ PROPERTY REPORT
 */
 
 if (propertyForm) {
-  propertyForm.addEventListener("submit", (event) => {
+  propertyForm.addEventListener("submit", async (event) => {
 
     event.preventDefault();
 
@@ -32,12 +32,8 @@ if (propertyForm) {
     }
 
     reportAddress.textContent = address;
-
-    reportStatus.textContent =
-      "Initial property assessment ready";
-
-    reportSources.textContent =
-      "Public NZ property information";
+    reportStatus.textContent = "Analysing property...";
+    reportSources.textContent = "Connecting to NZ property data...";
 
     propertyReport.classList.remove("hidden");
 
@@ -45,6 +41,67 @@ if (propertyForm) {
       behavior: "smooth",
       block: "start"
     });
+
+    try {
+
+      const response = await fetch(
+        "/api/property-report",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify({
+            address
+          })
+        }
+      );
+
+      const result = await response.json();
+
+      console.log(
+        "Advance Group Property Report:",
+        result
+      );
+
+      if (!response.ok) {
+
+        reportStatus.textContent =
+          result.error || "Property report could not be created.";
+
+        reportSources.textContent =
+          "Property data validation failed.";
+
+        return;
+      }
+
+      reportStatus.textContent =
+        result.validation?.valid
+          ? "Property assessment ready"
+          : "Property address requires verification";
+
+      reportSources.textContent =
+        result.data?.addressFound
+          ? "LINZ property data connected"
+          : "NZ property data searched";
+
+      currentProperty = result;
+
+    } catch (error) {
+
+      console.error(
+        "Advance Group Property Report error:",
+        error
+      );
+
+      reportStatus.textContent =
+        "Unable to connect to property intelligence service.";
+
+      reportSources.textContent =
+        "Please try again.";
+    }
 
   });
 }
