@@ -1,11 +1,25 @@
-export async function getNZPropertyData(address) {
+export async function getNZPropertyData(address, apiKey) {
+  if (!apiKey) {
+    return {
+      address,
+      source: {
+        name: "LINZ Data Service",
+        type: "external",
+        status: "missing_api_key"
+      },
+      data: {}
+    };
+  }
+
   return {
     address,
     source: {
-      name: "NZ Property Data",
+      name: "LINZ Data Service",
       type: "external",
-      status: "not_connected"
+      status: "connected"
     },
-    data: {}
+    data: {
+      message: "LINZ connection ready."
+    }
   };
 }

@@ -1,7 +1,7 @@
 import { getNZPropertyData } from "./nz-property-data.js";
 import { validateNZAddress } from "./nz-address-validation.js";
 
-export async function getPropertyData(address) {
+export async function getPropertyData(address, apiKey) {
   const validation = validateNZAddress(address);
 
   if (!validation.valid) {
@@ -14,7 +14,10 @@ export async function getPropertyData(address) {
     };
   }
 
-  const nzData = await getNZPropertyData(validation.address);
+  const nzData = await getNZPropertyData(
+    validation.address,
+    apiKey
+  );
 
   return {
     address: validation.address,
