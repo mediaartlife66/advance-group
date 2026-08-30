@@ -78,7 +78,7 @@ if (quoteForm) {
       block: "center"
     });
 
-    console.log("Advance Paint quotation request:", {
+    console.log("Advance Group quotation request:", {
       name,
       phone
     });
@@ -129,7 +129,7 @@ if ("modelContext" in navigator) {
       {
         name: "get_property_report",
         description:
-          "Start a property report for an address on Advance Paint.",
+          "Start a property report for an address on Advance Group.",
         inputSchema: {
           type: "object",
           properties: {

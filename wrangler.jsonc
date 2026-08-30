@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "advance-paint-v2",
+  "name": "advance-group",
   "main": "worker.js",
   "compatibility_date": "2026-08-17",
   "assets": {

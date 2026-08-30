@@ -82,7 +82,7 @@ if (quoteForm) {
       block: "center"
     });
 
-    console.log("Advance Paint quotation request:", {
+    console.log("Advance Group quotation request:", {
       name,
       phone
     });
@@ -105,7 +105,7 @@ if (document.modelContext) {
     name: "get_property_report",
 
     description:
-      "Start an Advance Paint property report using a property address.",
+      "Start an Advance Group property report using a property address.",
 
     inputSchema: {
       type: "object",
@@ -152,7 +152,7 @@ if (document.modelContext) {
       currentProperty = createProperty(cleanAddress);
 
       console.log(
-        "Advance Paint Property Intelligence:",
+        "Advance Group Property Intelligence:",
         currentProperty
       );
 
@@ -198,7 +198,7 @@ if (document.modelContext) {
           await response.json();
 
         console.log(
-          "Advance Paint Worker Property Report:",
+          "Advance Group Worker Property Report:",
           propertyReport
         );
 
@@ -249,7 +249,7 @@ if (document.modelContext) {
       } catch (error) {
 
         console.error(
-          "Advance Paint Worker error:",
+          "Advance Group Worker error:",
           error
         );
 
@@ -269,7 +269,7 @@ if (document.modelContext) {
   });
 
   console.log(
-    "Advance Paint WebMCP tool registered:",
+    "Advance Group WebMCP tool registered:",
     "get_property_report"
   );
 
