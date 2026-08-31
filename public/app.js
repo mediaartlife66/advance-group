@@ -1,621 +1,384 @@
-import { createProperty } from "./property-intelligence.js";
+const cameraInput = document.getElementById("cameraInput");
+const photoInput = document.getElementById("photoInput");
+const photoPreview = document.getElementById("photoPreview");
+const analyseButton = document.getElementById("analyseButton");
+const analysisStatus = document.getElementById("analysisStatus");
 
-let currentProperty = null;
-let selectedStreetKitAddress = null;
+let photos = [];
 
-const propertyForm =
-  document.getElementById("propertyForm");
+function addPhotos(files) {
 
-const propertyReport =
-  document.getElementById("propertyReport");
+  [...files].forEach(file => {
 
-const reportAddress =
-  document.getElementById("reportAddress");
+    if (!file.type.startsWith("image/")) return;
 
-const reportStatus =
-  document.getElementById("reportStatus");
+    photos.push(file);
 
-const reportSources =
-  document.getElementById("reportSources");
+    if (photoPreview) {
 
-const quoteForm =
-  document.getElementById("quoteForm");
+      const img = document.createElement("img");
 
-const success =
-  document.getElementById("success");
+      img.src = URL.createObjectURL(file);
 
+      img.alt = "Site photo";
 
-/*
---------------------------------------------------
-STREETKIT ADDRESS AUTOCOMPLETE
---------------------------------------------------
-*/
-
-window.addEventListener("DOMContentLoaded", () => {
-
-  if (!window.StreetKit) {
-
-    console.warn(
-      "StreetKit did not load."
-    );
-
-    return;
-  }
-
-
-  const addressInput =
-    document.getElementById(
-      "propertyAddress"
-    );
-
-
-  if (!addressInput) {
-    return;
-  }
-
-
-  StreetKit.init({
-
-    input: "#propertyAddress",
-
-    publicMode: true,
-
-    indexBaseUrl:
-      "https://index.streetkit.smp.kiwi/public/v1",
-
-    limit: 8,
-
-    minQueryLength: 3,
-
-
-    onSelect(address) {
-
-      selectedStreetKitAddress =
-        address;
-
-
-      addressInput.value =
-        address.label;
-
-
-      console.log(
-        "StreetKit selected address:",
-        address
-      );
-
-    },
-
-
-    onClear() {
-
-      selectedStreetKitAddress =
-        null;
-
-    },
-
-
-    onError(error) {
-
-      console.warn(
-        "StreetKit error:",
-        error
-      );
-
+      photoPreview.appendChild(img);
     }
 
   });
+
+}
+
+
+/* CAMERA */
+
+cameraInput?.addEventListener("change", event => {
+
+  addPhotos(event.target.files);
 
 });
 
 
-/*
---------------------------------------------------
-PROPERTY REPORT
---------------------------------------------------
-*/
+/* ADD PHOTOS */
 
-if (propertyForm) {
+photoInput?.addEventListener("change", event => {
 
-  propertyForm.addEventListener(
-    "submit",
-    async (event) => {
+  addPhotos(event.target.files);
 
-      event.preventDefault();
+});
 
 
-      const addressInput =
-        document.getElementById(
-          "propertyAddress"
+/* TRADE */
+
+document
+  .querySelectorAll(".trade-button")
+  .forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      document
+        .querySelectorAll(".trade-button")
+        .forEach(b =>
+          b.classList.remove("active")
         );
 
+      button.classList.add("active");
 
-      const address =
-        addressInput.value.trim();
+    });
 
-
-      if (!address) {
-        return;
-      }
+  });
 
 
-      reportAddress.textContent =
-        address;
+/* SITE OBSERVATIONS */
 
-      reportStatus.textContent =
-        "Analysing property...";
+document
+  .querySelectorAll(".suggestion-btn")
+  .forEach(button => {
 
-      reportSources.textContent =
-        "Connecting to NZ property data...";
+    button.addEventListener("click", () => {
 
+      const input =
+        document.getElementById("customObservation");
 
-      propertyReport.classList.remove(
-        "hidden"
-      );
+      if (!input) return;
 
+      const text =
+        button.textContent.trim();
 
-      propertyReport.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+      if (!input.value.trim()) {
 
+        input.value = text;
 
-      /*
-      ----------------------------------------------
-      SEND STREETKIT DATA WHEN AVAILABLE
-      ----------------------------------------------
-      */
+      } else {
 
-      const requestBody = {
-        address
-      };
-
-
-      if (
-        selectedStreetKitAddress?.location
-      ) {
-
-        requestBody.latitude =
-          selectedStreetKitAddress.location.lat;
-
-        requestBody.longitude =
-          selectedStreetKitAddress.location.lon;
-
-        requestBody.streetKitId =
-          selectedStreetKitAddress.id || null;
+        input.value += ", " + text;
 
       }
 
+    });
 
-      console.log(
-        "Advance Group property request:",
-        requestBody
-      );
+  });
 
 
-      try {
+/* ANALYSE PROPERTY */
 
-        const response =
-          await fetch(
-            "/api/property-report",
-            {
+analyseButton?.addEventListener("click", () => {
 
-              method: "POST",
-
-              headers: {
-                "Content-Type":
-                  "application/json"
-              },
-
-              body:
-                JSON.stringify(
-                  requestBody
-                )
-
-            }
-          );
+  const address =
+    document
+      .getElementById("propertyAddress")
+      ?.value
+      .trim();
 
 
-        const result =
-          await response.json();
+  if (!address) {
+
+    alert(
+      "Please enter the property address first."
+    );
+
+    document
+      .getElementById("propertyAddress")
+      ?.focus();
+
+    return;
+  }
 
 
-        console.log(
-          "Advance Group Property Report:",
-          result
-        );
+  /* PROCESSING */
+
+  if (analysisStatus) {
+
+    analysisStatus.classList.remove("hidden");
+
+    analysisStatus.textContent =
+      "ANALYSING PROPERTY...";
+
+  }
 
 
-        if (!response.ok) {
+  analyseButton.disabled = true;
 
-          reportStatus.textContent =
-            result.error ||
-            "Property report could not be created.";
-
-          reportSources.textContent =
-            "Property data validation failed.";
-
-          return;
-
-        }
+  analyseButton.innerHTML =
+    '<span class="analyse-icon">✦</span> ANALYSING PROPERTY...';
 
 
-        reportStatus.textContent =
-          result.validation?.valid
-            ? "Property assessment ready"
-            : "Property address requires verification";
+  /* SIMULATE ANALYSIS */
 
+  setTimeout(() => {
 
-        reportSources.textContent =
-          result.status === "connected"
-            ? "LINZ property data connected"
-            : "NZ property data searched";
+    if (analysisStatus) {
 
-
-        const linzReport =
-          document.getElementById(
-            "linzReport"
-          );
-
-
-        const propertyData =
-          result.data || {};
-
-
-        const parcelFeatures =
-          propertyData.parcel?.features ||
-          [];
-
-
-        const parcel =
-          parcelFeatures
-            .map(
-              feature =>
-                feature.properties || {}
-            )
-            .find(
-              parcel =>
-                parcel.parcel_intent !==
-                  "Road" &&
-                (
-                  parcel.appellation ||
-                  parcel.titles ||
-                  parcel.survey_area ||
-                  parcel.calc_area
-                )
-            ) || {};
-
-
-        const coordinates =
-          propertyData.address
-            ?.coordinates || {};
-
-
-        if (linzReport) {
-
-          document.getElementById(
-            "reportParcel"
-          ).textContent =
-            parcel.appellation ||
-            "Not available";
-
-
-          document.getElementById(
-            "reportTitle"
-          ).textContent =
-            parcel.titles ||
-            "Not available";
-
-
-          document.getElementById(
-            "reportSurveyArea"
-          ).textContent =
-            parcel.survey_area != null
-              ? `${parcel.survey_area} m²`
-              : "Not available";
-
-
-          document.getElementById(
-            "reportCalcArea"
-          ).textContent =
-            parcel.calc_area != null
-              ? `${parcel.calc_area} m²`
-              : "Not available";
-
-
-          document.getElementById(
-            "reportLandDistrict"
-          ).textContent =
-            parcel.land_district ||
-            "Not available";
-
-
-          document.getElementById(
-            "reportLatitude"
-          ).textContent =
-            coordinates.latitude != null
-              ? coordinates.latitude
-              : "Not available";
-
-
-          document.getElementById(
-            "reportLongitude"
-          ).textContent =
-            coordinates.longitude != null
-              ? coordinates.longitude
-              : "Not available";
-
-
-          linzReport.classList.remove(
-            "hidden"
-          );
-
-        }
-
-
-        currentProperty =
-          result;
-
-      } catch (error) {
-
-        console.error(
-          "Advance Group Property Report error:",
-          error
-        );
-
-
-        reportStatus.textContent =
-          "Unable to connect to property intelligence service.";
-
-
-        reportSources.textContent =
-          "Please try again.";
-
-      }
+      analysisStatus.textContent =
+        "PROPERTY ANALYSIS READY";
 
     }
 
-  );
 
-}
-
-
-/*
---------------------------------------------------
-PROFESSIONAL QUOTATION
---------------------------------------------------
-*/
-
-if (quoteForm) {
-
-  quoteForm.addEventListener(
-    "submit",
-    event => {
-
-      event.preventDefault();
+    analyseButton.innerHTML =
+      '<span class="analyse-icon">✓</span> ANALYSIS COMPLETE';
 
 
-      const name =
-        document.getElementById(
-          "quoteName"
-        ).value.trim();
+    analyseButton.disabled = false;
 
 
-      const phone =
-        document.getElementById(
-          "quotePhone"
-        ).value.trim();
+    /* CREATE REPORT */
+
+    showPropertyReport(address);
+
+  }, 1800);
+
+});
 
 
-      if (!name || !phone) {
-        return;
-      }
+/* PROPERTY REPORT */
+
+function showPropertyReport(address) {
+
+  let report =
+    document.getElementById("propertyReport");
 
 
-      success.textContent =
-        "Thanks. Your quotation request has been recorded for the next step.";
+  /*
+    If the report does not exist,
+    create it automatically.
+  */
 
+  if (!report) {
 
-      success.classList.remove(
-        "hidden"
-      );
+    report =
+      document.createElement("section");
 
+    report.id =
+      "propertyReport";
 
-      success.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
+    report.className =
+      "property-report";
 
+    const assessment =
+      document.getElementById("assessment");
 
-      console.log(
-        "Advance Group quotation request:",
-        {
-          name,
-          phone
-        }
-      );
+    const container =
+      assessment?.querySelector(".container");
+
+    if (container) {
+
+      container.appendChild(report);
+
+    } else {
+
+      document
+        .querySelector("main")
+        ?.appendChild(report);
 
     }
-  );
+
+  }
+
+
+  const activeTrade =
+    document.querySelector(
+      ".trade-button.active"
+    );
+
+
+  const trade =
+    activeTrade
+      ? activeTrade.textContent.trim()
+      : "Painting";
+
+
+  report.innerHTML = `
+
+    <div class="report-header">
+
+      <div>
+
+        <p class="eyebrow">
+          PROPERTY INTELLIGENCE
+        </p>
+
+        <h2>
+          Property analysis
+        </h2>
+
+        <p>
+          Initial field assessment
+          from today's site information.
+        </p>
+
+      </div>
+
+      <div class="report-badge">
+        ANALYSIS READY
+      </div>
+
+    </div>
+
+
+    <div class="report-summary">
+
+      <div>
+
+        <span>PROPERTY</span>
+
+        <strong>
+          ${escapeHTML(address)}
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span>TRADE</span>
+
+        <strong>
+          ${escapeHTML(trade)}
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span>PHOTOS</span>
+
+        <strong>
+          ${photos.length}
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="report-grid">
+
+
+      <div class="report-card">
+
+        <p class="card-kicker">
+          SITE CONDITION
+        </p>
+
+        <h3>
+          Initial observations
+        </h3>
+
+        <p>
+          Review the captured site information
+          before final pricing and scheduling.
+        </p>
+
+      </div>
+
+
+      <div class="report-card">
+
+        <p class="card-kicker">
+          PHOTO ASSESSMENT
+        </p>
+
+        <h3>
+          ${photos.length} photo${photos.length === 1 ? "" : "s"} captured
+        </h3>
+
+        <p>
+          Photos are ready for detailed
+          assessment and job documentation.
+        </p>
+
+      </div>
+
+
+      <div class="report-card large">
+
+        <p class="card-kicker">
+          NEXT STEP
+        </p>
+
+        <h3>
+          Prepare the job
+        </h3>
+
+        <p>
+          Confirm preparation, access, materials,
+          labour and customer requirements
+          before preparing the quotation.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  `;
+
+
+  report.classList.remove("hidden");
+
+
+  report.scrollIntoView({
+
+    behavior: "smooth",
+
+    block: "start"
+
+  });
 
 }
 
 
-/*
---------------------------------------------------
-WEBMCP PROPERTY REPORT TOOL
---------------------------------------------------
-*/
+/* SAFELY DISPLAY USER TEXT */
 
-if (document.modelContext) {
+function escapeHTML(text) {
 
-  document.modelContext.registerTool({
+  const div =
+    document.createElement("div");
 
-    name:
-      "get_property_report",
+  div.textContent = text;
 
-    description:
-      "Start an Advance Group property report using a property address.",
+  return div.innerHTML;
 
-    inputSchema: {
-
-      type: "object",
-
-      properties: {
-
-        address: {
-
-          type: "string",
-
-          description:
-            "The property address to analyse."
-
-        }
-
-      },
-
-      required: [
-        "address"
-      ]
-
-    },
-
-
-    execute:
-      async ({ address }) => {
-
-        const cleanAddress =
-          String(address || "")
-            .trim();
-
-
-        if (!cleanAddress) {
-
-          return {
-
-            success: false,
-
-            error:
-              "Property address is required."
-
-          };
-
-        }
-
-
-        const addressInput =
-          document.getElementById(
-            "propertyAddress"
-          );
-
-
-        if (!addressInput) {
-
-          return {
-
-            success: false,
-
-            error:
-              "Property address field was not found."
-
-          };
-
-        }
-
-
-        addressInput.value =
-          cleanAddress;
-
-
-        currentProperty =
-          createProperty(
-            cleanAddress
-          );
-
-
-        console.log(
-          "Advance Group Property Intelligence:",
-          currentProperty
-        );
-
-
-        const form =
-          document.getElementById(
-            "propertyForm"
-          );
-
-
-        if (form) {
-
-          form.requestSubmit();
-
-        }
-
-
-        return {
-
-          success: true,
-
-          address:
-            cleanAddress,
-
-          message:
-            `Property report started for ${cleanAddress}.`
-
-        };
-
-      }
-
-  });
-
-
-  console.log(
-    "Advance Group WebMCP tool registered:",
-    "get_property_report"
-  );
-
-}
-
-// PHOTO PREVIEW
-function setupPhotoPreview(inputId, previewId) {
-  const input = document.getElementById(inputId);
-  const preview = document.getElementById(previewId);
-
-  if (!input || !preview) return;
-
-  input.addEventListener("change", () => {
-    preview.innerHTML = "";
-
-    Array.from(input.files).forEach(file => {
-      const img = document.createElement("img");
-      img.src = URL.createObjectURL(file);
-      img.alt = "Property photo";
-      preview.appendChild(img);
-    });
-  });
-}
-
-setupPhotoPreview("propertyPhotos", "photoPreview");
-setupPhotoPreview("propertyPhotoLibrary", "photoPreview");
-
-// PHOTO ASSESSMENT
-const photoInput = document.getElementById("propertyPhotos");
-const photoPreview = document.getElementById("photoPreview");
-
-if (photoInput && photoPreview) {
-  photoInput.addEventListener("change", () => {
-    photoPreview.innerHTML = "";
-
-    [...photoInput.files].forEach(file => {
-      const reader = new FileReader();
-
-      reader.onload = event => {
-        const img = document.createElement("img");
-        img.src = event.target.result;
-        img.alt = "Property photo";
-        photoPreview.appendChild(img);
-      };
-
-      reader.readAsDataURL(file);
-    });
-  });
 }
