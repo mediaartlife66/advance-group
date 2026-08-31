@@ -26,7 +26,6 @@
     rel="stylesheet"
     href="https://streetkit.smp.kiwi/widget/streetkit.css"
   >
-
 </head>
 
 <body>
@@ -118,7 +117,7 @@
             >
           </label>
 
-          <!-- Selected StreetKit address information -->
+          <!-- StreetKit selected address information -->
           <input
             type="hidden"
             id="selectedAddressId"
@@ -137,7 +136,6 @@
             name="selectedLongitude"
           >
 
-
           <button
             class="button primary"
             type="submit"
@@ -148,7 +146,10 @@
         </form>
 
 
-        <!-- PROPERTY REPORT -->
+        <!-- ==========================================
+             PROPERTY REPORT
+             ========================================== -->
+
         <section
           id="propertyReport"
           class="property-report hidden"
@@ -159,10 +160,23 @@
           </p>
 
           <h2>
-            Property information
+            Property intelligence
           </h2>
 
+
+          <!-- ==========================================
+               1. PROPERTY SNAPSHOT
+               ========================================== -->
+
           <div class="report-card">
+
+            <p class="eyebrow">
+              PROPERTY SNAPSHOT
+            </p>
+
+            <h3>
+              At a glance
+            </h3>
 
             <div class="report-row">
               <span>Address</span>
@@ -172,7 +186,6 @@
               </strong>
             </div>
 
-
             <div class="report-row">
               <span>Property status</span>
 
@@ -180,7 +193,6 @@
                 Initial property assessment
               </strong>
             </div>
-
 
             <div class="report-row">
               <span>Data sources</span>
@@ -193,21 +205,22 @@
           </div>
 
 
-          <!-- LINZ PROPERTY DATA -->
+          <!-- ==========================================
+               2. LAND & PARCEL
+               ========================================== -->
+
           <div
             id="linzReport"
             class="report-card hidden"
           >
 
             <p class="eyebrow">
-              PROPERTY INTELLIGENCE
+              VERIFIED PROPERTY DATA
             </p>
-
 
             <h3>
               Land &amp; parcel
             </h3>
-
 
             <div class="report-row">
               <span>Parcel</span>
@@ -217,7 +230,6 @@
               </strong>
             </div>
 
-
             <div class="report-row">
               <span>Title</span>
 
@@ -225,7 +237,6 @@
                 Awaiting data
               </strong>
             </div>
-
 
             <div class="report-row">
               <span>Survey area</span>
@@ -235,7 +246,6 @@
               </strong>
             </div>
 
-
             <div class="report-row">
               <span>Calculated area</span>
 
@@ -243,7 +253,6 @@
                 Awaiting data
               </strong>
             </div>
-
 
             <div class="report-row">
               <span>Land district</span>
@@ -258,7 +267,6 @@
               Location
             </h3>
 
-
             <div class="report-row">
               <span>Latitude</span>
 
@@ -266,7 +274,6 @@
                 Awaiting data
               </strong>
             </div>
-
 
             <div class="report-row">
               <span>Longitude</span>
@@ -279,25 +286,423 @@
           </div>
 
 
+          <!-- ==========================================
+               3. TRADE INTELLIGENCE
+               ========================================== -->
+
+          <div class="report-card trade-intelligence">
+
+            <p class="eyebrow">
+              TRADE INTELLIGENCE
+            </p>
+
+            <h3>
+              What this means for the job
+            </h3>
+
+            <p class="report-intro">
+              This section will turn property information
+              into practical information for painters,
+              builders and other trades.
+            </p>
+
+
+            <div class="trade-grid">
+
+              <div class="trade-item">
+                <span class="trade-label">
+                  Exterior condition
+                </span>
+
+                <strong>
+                  Photo assessment required
+                </strong>
+
+                <p>
+                  Upload exterior photos to assess
+                  paint condition, peeling, cracking,
+                  weathering and surface deterioration.
+                </p>
+              </div>
+
+
+              <div class="trade-item">
+                <span class="trade-label">
+                  Exterior materials
+                </span>
+
+                <strong>
+                  Site / photo assessment required
+                </strong>
+
+                <p>
+                  Identify weatherboard, brick,
+                  fibre cement, concrete, metal,
+                  timber and other surfaces.
+                </p>
+              </div>
+
+
+              <div class="trade-item">
+                <span class="trade-label">
+                  Preparation level
+                </span>
+
+                <strong>
+                  Not yet assessed
+                </strong>
+
+                <p>
+                  Future AI analysis will estimate
+                  the likely preparation required
+                  before painting.
+                </p>
+              </div>
+
+
+              <div class="trade-item">
+                <span class="trade-label">
+                  Access requirements
+                </span>
+
+                <strong>
+                  Site assessment required
+                </strong>
+
+                <p>
+                  Check height, scaffolding,
+                  ladders, roof access, narrow areas
+                  and difficult working conditions.
+                </p>
+              </div>
+
+
+              <div class="trade-item">
+                <span class="trade-label">
+                  Surface risks
+                </span>
+
+                <strong>
+                  Not yet assessed
+                </strong>
+
+                <p>
+                  Future photo intelligence can identify
+                  possible mould, algae, exposed timber,
+                  cracks and failed coatings.
+                </p>
+              </div>
+
+
+              <div class="trade-item">
+                <span class="trade-label">
+                  Site complexity
+                </span>
+
+                <strong>
+                  Initial assessment
+                </strong>
+
+                <p>
+                  Property data will eventually combine
+                  with photos and trade observations to
+                  classify project complexity.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- ==========================================
+               4. SITE VISIT CHECKLIST
+               ========================================== -->
+
+          <div class="report-card">
+
+            <p class="eyebrow">
+              SITE VISIT
+            </p>
+
+            <h3>
+              Tradie checklist
+            </h3>
+
+            <div class="tradie-checklist">
+
+  <label class="checklist-item">
+    <input type="checkbox">
+    <span>Check exterior wall surfaces</span>
+  </label>
+
+  <label class="checklist-item">
+    <input type="checkbox">
+    <span>Check existing paint condition</span>
+  </label>
+
+  <label class="checklist-item">
+    <input type="checkbox">
+    <span>Check timber deterioration</span>
+  </label>
+
+  <label class="checklist-item">
+    <input type="checkbox">
+    <span>Check mould / algae / moisture</span>
+  </label>
+
+  <label class="checklist-item">
+    <input type="checkbox">
+    <span>Check roof and high-level access</span>
+  </label>
+
+  <label class="checklist-item">
+    <input type="checkbox">
+    <span>Check scaffolding / ladder requirements</span>
+  </label>
+
+  <label class="checklist-item">
+    <input type="checkbox">
+    <span>Check windows, doors and trims</span>
+  </label>
+
+  <label class="checklist-item">
+    <input type="checkbox">
+    <span>Check decks, fences and other structures</span>
+  </label>
+
+</div>
+
+          </div>
+
+
+          <!-- ==========================================
+     5. PHOTO ASSESSMENT
+     ========================================== -->
+
+<div class="report-card photo-assessment">
+
+  <p class="eyebrow">
+    PHOTO ASSESSMENT
+  </p>
+
+  <h3>
+    Show us the property
+  </h3>
+
+  <p>
+    Take clear photos of the areas you want assessed.
+    Photos help identify surfaces, condition, preparation
+    requirements and access challenges.
+  </p>
+
+  <div class="photo-actions">
+
+    <label class="photo-button">
+      📷
+      <span>Take photos</span>
+      <input
+        type="file"
+        accept="image/*"
+        capture="environment"
+        multiple
+        hidden
+        id="propertyPhotos"
+      >
+    </label>
+
+    <label class="photo-button">
+      🖼️
+      <span>Choose photos</span>
+      <input
+        type="file"
+        accept="image/*"
+        multiple
+        hidden
+        id="propertyPhotoLibrary"
+      >
+    </label>
+
+  </div>
+
+  <div
+    id="photoPreview"
+    class="photo-preview"
+  ></div>
+
+  <div class="photo-checks">
+
+    <label class="checklist-item">
+      <input type="checkbox">
+      <span>Exterior walls</span>
+    </label>
+
+    <label class="checklist-item">
+      <input type="checkbox">
+      <span>Windows, doors & trims</span>
+    </label>
+
+    <label class="checklist-item">
+      <input type="checkbox">
+      <span>Decks, fences & structures</span>
+    </label>
+
+    <label class="checklist-item">
+      <input type="checkbox">
+      <span>Problem areas / damage</span>
+    </label>
+
+    <label class="checklist-item">
+      <input type="checkbox">
+      <span>High-level / difficult access</span>
+    </label>
+
+  </div>
+
+  <p class="photo-note">
+    Clear photos give the AI a better view of the job.
+  </p>
+
+</div>
+
+          <div class="report-card">
+
+            <p class="eyebrow">
+              QUOTE PREPARATION
+            </p>
+
+            <h3>
+              Information still required
+            </h3>
+
+            <div class="report-row">
+              <span>Exterior photos</span>
+
+              <strong>
+                Required
+              </strong>
+            </div>
+
+            <div class="report-row">
+              <span>Surface measurements</span>
+
+              <strong>
+                Site assessment
+              </strong>
+            </div>
+
+            <div class="report-row">
+              <span>Preparation requirements</span>
+
+              <strong>
+                To be assessed
+              </strong>
+            </div>
+
+            <div class="report-row">
+              <span>Access requirements</span>
+
+              <strong>
+                To be assessed
+              </strong>
+            </div>
+
+            <div class="report-row">
+              <span>Materials</span>
+
+              <strong>
+                To be determined
+              </strong>
+            </div>
+
+            <div class="report-row">
+              <span>Labour estimate</span>
+
+              <strong>
+                To be determined
+              </strong>
+            </div>
+
+          </div>
+
+
+          <!-- ==========================================
+               6. FUTURE AI INTELLIGENCE
+               ========================================== -->
+
+          <div class="report-card future-intelligence">
+
+            <p class="eyebrow">
+              NEXT INTELLIGENCE LAYER
+            </p>
+
+            <h3>
+              Property + photos + AI
+            </h3>
+
+            <p>
+              The next stage will allow the homeowner
+              or tradie to upload property photos.
+              AI will analyse the visible building
+              condition and turn those observations
+              into structured trade information.
+            </p>
+
+            <div class="future-flow">
+
+              <span>
+                Property data
+              </span>
+
+              <span>+</span>
+
+              <span>
+                Exterior photos
+              </span>
+
+              <span>+</span>
+
+              <span>
+                Trade observations
+              </span>
+
+              <span>→</span>
+
+              <strong>
+                Trade-ready property intelligence
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <!-- ==========================================
+               REPORT NOTE
+               ========================================== -->
+
           <p class="report-note">
-            LINZ property information has been connected.
-            This property profile will become the foundation
-            for the Advance Group property intelligence system.
+            Verified property information comes from
+            connected NZ public property data. Trade
+            assessments are only confirmed when supported
+            by property data, photographs or a site
+            inspection.
           </p>
 
 
-          <!-- QUOTE REQUEST -->
+          <!-- ==========================================
+               QUOTE REQUEST
+               ========================================== -->
+
           <div class="quote-section">
 
             <p class="eyebrow">
               NEXT STEP
             </p>
 
-
             <h3>
               Would you like a professional quotation?
             </h3>
-
 
             <form id="quoteForm">
 
@@ -314,7 +719,6 @@
                 >
               </label>
 
-
               <label for="quotePhone">
                 Phone number
 
@@ -328,7 +732,6 @@
                 >
               </label>
 
-
               <button
                 class="button primary"
                 type="submit"
@@ -338,13 +741,12 @@
 
             </form>
 
-
             <p
               id="success"
               class="hidden success"
             >
-              Thanks. Your quotation request has been recorded
-              for the next step.
+              Thanks. Your quotation request has been
+              recorded for the next step.
             </p>
 
           </div>
@@ -376,12 +778,14 @@
   </footer>
 
 
-  <!-- JAVASCRIPT -->
+  <!-- STREETKIT -->
   <script
     src="https://streetkit.smp.kiwi/widget/streetkit.js"
     defer
   ></script>
 
+
+  <!-- APPLICATION -->
   <script
     type="module"
     src="app.js"

@@ -574,3 +574,25 @@ if (document.modelContext) {
   );
 
 }
+
+// PHOTO PREVIEW
+function setupPhotoPreview(inputId, previewId) {
+  const input = document.getElementById(inputId);
+  const preview = document.getElementById(previewId);
+
+  if (!input || !preview) return;
+
+  input.addEventListener("change", () => {
+    preview.innerHTML = "";
+
+    Array.from(input.files).forEach(file => {
+      const img = document.createElement("img");
+      img.src = URL.createObjectURL(file);
+      img.alt = "Property photo";
+      preview.appendChild(img);
+    });
+  });
+}
+
+setupPhotoPreview("propertyPhotos", "photoPreview");
+setupPhotoPreview("propertyPhotoLibrary", "photoPreview");
