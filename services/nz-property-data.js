@@ -27,7 +27,7 @@ export async function getNZPropertyData(address, apiKey) {
       request: "GetFeature",
       typeNames: ADDRESS_LAYER,
       outputFormat: "application/json",
-      cql_filter: `full_address ILIKE '%${address.replace(/'/g, "''")}%'`,
+      cql_filter: `full_address ILIKE '%${address.replace(/'/g, "''")}%' OR full_address ILIKE '%${address.replace(/,/g, "").replace(/'/g, "''")}%'`,
       count: "10"
     });
 

@@ -20,6 +20,13 @@
   >
 
   <link rel="stylesheet" href="style.css">
+
+  <!-- StreetKit address autocomplete -->
+  <link
+    rel="stylesheet"
+    href="https://streetkit.smp.kiwi/widget/streetkit.css"
+  >
+
 </head>
 
 <body>
@@ -105,11 +112,30 @@
               id="propertyAddress"
               name="propertyAddress"
               type="text"
-              placeholder="Enter property address"
-              autocomplete="street-address"
+              placeholder="Start typing your property address"
+              autocomplete="off"
               required
             >
           </label>
+
+          <!-- Selected StreetKit address information -->
+          <input
+            type="hidden"
+            id="selectedAddressId"
+            name="selectedAddressId"
+          >
+
+          <input
+            type="hidden"
+            id="selectedLatitude"
+            name="selectedLatitude"
+          >
+
+          <input
+            type="hidden"
+            id="selectedLongitude"
+            name="selectedLongitude"
+          >
 
 
           <button
@@ -122,122 +148,143 @@
         </form>
 
 
-    <!-- PROPERTY REPORT -->
-<section
-  id="propertyReport"
-  class="property-report hidden"
->
+        <!-- PROPERTY REPORT -->
+        <section
+          id="propertyReport"
+          class="property-report hidden"
+        >
 
-  <p class="eyebrow">
-    PROPERTY REPORT
-  </p>
+          <p class="eyebrow">
+            PROPERTY REPORT
+          </p>
 
-  <h2>
-    Property information
-  </h2>
+          <h2>
+            Property information
+          </h2>
 
-  <div class="report-card">
+          <div class="report-card">
 
-    <div class="report-row">
-      <span>Address</span>
-      <strong id="reportAddress">
-        Awaiting property address
-      </strong>
-    </div>
+            <div class="report-row">
+              <span>Address</span>
 
-    <div class="report-row">
-      <span>Property status</span>
-      <strong id="reportStatus">
-        Initial property assessment
-      </strong>
-    </div>
-
-    <div class="report-row">
-      <span>Data sources</span>
-      <strong id="reportSources">
-        Public NZ property information
-      </strong>
-    </div>
-
-  </div>
+              <strong id="reportAddress">
+                Awaiting property address
+              </strong>
+            </div>
 
 
-  <!-- LINZ PROPERTY DATA -->
-  <div
-    id="linzReport"
-    class="report-card hidden"
-  >
+            <div class="report-row">
+              <span>Property status</span>
 
-    <p class="eyebrow">
-      PROPERTY INTELLIGENCE
-    </p>
-
-    <h3>
-      Land &amp; parcel
-    </h3>
-
-    <div class="report-row">
-      <span>Parcel</span>
-      <strong id="reportParcel">
-        Awaiting data
-      </strong>
-    </div>
-
-    <div class="report-row">
-      <span>Title</span>
-      <strong id="reportTitle">
-        Awaiting data
-      </strong>
-    </div>
-
-    <div class="report-row">
-      <span>Survey area</span>
-      <strong id="reportSurveyArea">
-        Awaiting data
-      </strong>
-    </div>
-
-    <div class="report-row">
-      <span>Calculated area</span>
-      <strong id="reportCalcArea">
-        Awaiting data
-      </strong>
-    </div>
-
-    <div class="report-row">
-      <span>Land district</span>
-      <strong id="reportLandDistrict">
-        Awaiting data
-      </strong>
-    </div>
+              <strong id="reportStatus">
+                Initial property assessment
+              </strong>
+            </div>
 
 
-    <h3>
-      Location
-    </h3>
+            <div class="report-row">
+              <span>Data sources</span>
 
-    <div class="report-row">
-      <span>Latitude</span>
-      <strong id="reportLatitude">
-        Awaiting data
-      </strong>
-    </div>
+              <strong id="reportSources">
+                Public NZ property information
+              </strong>
+            </div>
 
-    <div class="report-row">
-      <span>Longitude</span>
-      <strong id="reportLongitude">
-        Awaiting data
-      </strong>
-    </div>
-
-  </div>
+          </div>
 
 
-  <p class="report-note">
-    LINZ property information has been connected.
-    This property profile will become the foundation
-    for the Advance Group property intelligence system.
-  </p>
+          <!-- LINZ PROPERTY DATA -->
+          <div
+            id="linzReport"
+            class="report-card hidden"
+          >
+
+            <p class="eyebrow">
+              PROPERTY INTELLIGENCE
+            </p>
+
+
+            <h3>
+              Land &amp; parcel
+            </h3>
+
+
+            <div class="report-row">
+              <span>Parcel</span>
+
+              <strong id="reportParcel">
+                Awaiting data
+              </strong>
+            </div>
+
+
+            <div class="report-row">
+              <span>Title</span>
+
+              <strong id="reportTitle">
+                Awaiting data
+              </strong>
+            </div>
+
+
+            <div class="report-row">
+              <span>Survey area</span>
+
+              <strong id="reportSurveyArea">
+                Awaiting data
+              </strong>
+            </div>
+
+
+            <div class="report-row">
+              <span>Calculated area</span>
+
+              <strong id="reportCalcArea">
+                Awaiting data
+              </strong>
+            </div>
+
+
+            <div class="report-row">
+              <span>Land district</span>
+
+              <strong id="reportLandDistrict">
+                Awaiting data
+              </strong>
+            </div>
+
+
+            <h3>
+              Location
+            </h3>
+
+
+            <div class="report-row">
+              <span>Latitude</span>
+
+              <strong id="reportLatitude">
+                Awaiting data
+              </strong>
+            </div>
+
+
+            <div class="report-row">
+              <span>Longitude</span>
+
+              <strong id="reportLongitude">
+                Awaiting data
+              </strong>
+            </div>
+
+          </div>
+
+
+          <p class="report-note">
+            LINZ property information has been connected.
+            This property profile will become the foundation
+            for the Advance Group property intelligence system.
+          </p>
+
 
           <!-- QUOTE REQUEST -->
           <div class="quote-section">
@@ -246,9 +293,11 @@
               NEXT STEP
             </p>
 
+
             <h3>
               Would you like a professional quotation?
             </h3>
+
 
             <form id="quoteForm">
 
@@ -328,7 +377,15 @@
 
 
   <!-- JAVASCRIPT -->
-  <script type="module" src="app.js"></script>
+  <script
+    src="https://streetkit.smp.kiwi/widget/streetkit.js"
+    defer
+  ></script>
+
+  <script
+    type="module"
+    src="app.js"
+  ></script>
 
 </body>
 </html>

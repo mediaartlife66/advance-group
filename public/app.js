@@ -11,7 +11,117 @@ const reportSources = document.getElementById("reportSources");
 
 const quoteForm = document.getElementById("quoteForm");
 const success = document.getElementById("success");
+/*
+--------------------------------------------------
+STREETKIT ADDRESS AUTOCOMPLETE
+--------------------------------------------------
+*/
 
+let selectedStreetKitAddress = null;
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  if (!window.StreetKit) {
+    console.warn("StreetKit did not load.");
+    return;
+  }
+
+  const addressInput =
+    document.getElementById("propertyAddress");
+
+  if (!addressInput) {
+    return;
+  }
+
+  StreetKit.init({
+
+    input: "#propertyAddress",
+
+    publicMode: true,
+
+    indexBaseUrl:
+      "https://index.streetkit.smp.kiwi/public/v1",
+
+    limit: 8,
+
+    minQueryLength: 3,
+
+    onSelect(address) {
+
+      selectedStreetKitAddress = address;
+
+      addressInput.value =
+        address.label;
+
+      const addressId =
+        document.getElementById("selectedAddressId");
+
+      const latitude =
+        document.getElementById("selectedLatitude");
+
+      const longitude =
+        document.getElementById("selectedLongitude");
+
+      if (addressId) {
+        addressId.value =
+          address.id || "";
+      }
+
+      if (latitude) {
+        latitude.value =
+          address.location?.lat ?? "";
+      }
+
+      if (longitude) {
+        longitude.value =
+          address.location?.lon ?? "";
+      }
+
+      console.log(
+        "StreetKit selected address:",
+        address
+      );
+    },
+
+    onClear() {
+
+      selectedStreetKitAddress = null;
+
+      const addressId =
+        document.getElementById("selectedAddressId");
+
+      const latitude =
+        document.getElementById("selectedLatitude");
+
+      const longitude =
+        document.getElementById("selectedLongitude");
+
+      if (addressId) {
+        addressId.value = "";
+      }
+
+      if (latitude) {
+        latitude.value = "";
+      }
+
+      if (longitude) {
+        longitude.value = "";
+      }
+
+    },
+
+    onError(error) {
+
+      console.warn(
+        "StreetKit error:",
+        error
+      );
+
+    }
+
+  });
+
+});
 
 /*
 --------------------------------------------------
