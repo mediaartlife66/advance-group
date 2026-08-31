@@ -596,3 +596,26 @@ function setupPhotoPreview(inputId, previewId) {
 
 setupPhotoPreview("propertyPhotos", "photoPreview");
 setupPhotoPreview("propertyPhotoLibrary", "photoPreview");
+
+// PHOTO ASSESSMENT
+const photoInput = document.getElementById("propertyPhotos");
+const photoPreview = document.getElementById("photoPreview");
+
+if (photoInput && photoPreview) {
+  photoInput.addEventListener("change", () => {
+    photoPreview.innerHTML = "";
+
+    [...photoInput.files].forEach(file => {
+      const reader = new FileReader();
+
+      reader.onload = event => {
+        const img = document.createElement("img");
+        img.src = event.target.result;
+        img.alt = "Property photo";
+        photoPreview.appendChild(img);
+      };
+
+      reader.readAsDataURL(file);
+    });
+  });
+}

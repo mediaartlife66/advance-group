@@ -14,10 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  
 
   <link rel="stylesheet" href="style.css">
 
@@ -415,70 +412,148 @@
           </div>
 
 
-          <!-- ==========================================
-               4. SITE VISIT CHECKLIST
-               ========================================== -->
+         <!-- ==========================================
+     4. SITE ASSESSMENT
+     ========================================== -->
 
-          <div class="report-card">
+<div class="report-card">
 
-            <p class="eyebrow">
-              SITE VISIT
-            </p>
+  <p class="eyebrow">
+  TRADE ASSESSMENT
+</p>
 
-            <h3>
-              Tradie checklist
-            </h3>
+<h3>
+  What trade is assessing this property?
+</h3>
 
-            <div class="tradie-checklist">
+<label class="trade-selector">
+  <span>Trade</span>
 
-  <label class="checklist-item">
-    <input type="checkbox">
-    <span>Check exterior wall surfaces</span>
-  </label>
+  <input
+    type="text"
+    id="tradeType"
+    list="tradeOptions"
+    placeholder="Choose a trade or type your own..."
+    autocomplete="off"
+  >
 
-  <label class="checklist-item">
-    <input type="checkbox">
-    <span>Check existing paint condition</span>
-  </label>
+  <datalist id="tradeOptions">
+    <option value="Painting">
+    <option value="Roofing">
+    <option value="Building">
+    <option value="Plumbing">
+    <option value="Electrical">
+    <option value="Carpentry">
+    <option value="Landscaping">
+    <option value="Fencing">
+    <option value="Decking">
+    <option value="Guttering">
+    <option value="Cladding">
+    <option value="Flooring">
+    <option value="Tiling">
+    <option value="Other">
+  </datalist>
+</label>
 
-  <label class="checklist-item">
-    <input type="checkbox">
-    <span>Check timber deterioration</span>
-  </label>
+<p class="trade-helper">
+  Select a trade or type another trade for this project.
+</p>
 
-  <label class="checklist-item">
-    <input type="checkbox">
-    <span>Check mould / algae / moisture</span>
-  </label>
+  <p>
+    Select a suggestion or type your own observation.
+  </p>
 
-  <label class="checklist-item">
-    <input type="checkbox">
-    <span>Check roof and high-level access</span>
-  </label>
+  <div class="tradie-checklist">
 
-  <label class="checklist-item">
-    <input type="checkbox">
-    <span>Check scaffolding / ladder requirements</span>
-  </label>
+    <label class="checklist-item">
+      <span>Walls</span>
+      <input type="text" list="wallOptions" placeholder="Select or type...">
+      <datalist id="wallOptions">
+        <option value="Weatherboard">
+        <option value="Brick">
+        <option value="Render">
+        <option value="Fibre cement">
+        <option value="Concrete">
+        <option value="Metal">
+        <option value="Other">
+      </datalist>
+    </label>
 
-  <label class="checklist-item">
-    <input type="checkbox">
-    <span>Check windows, doors and trims</span>
-  </label>
+    <label class="checklist-item">
+      <span>Paint condition</span>
+      <input type="text" list="paintOptions" placeholder="Select or type...">
+      <datalist id="paintOptions">
+        <option value="Good">
+        <option value="Weathered">
+        <option value="Peeling">
+        <option value="Cracking">
+        <option value="Flaking">
+        <option value="Failed coating">
+      </datalist>
+    </label>
 
-  <label class="checklist-item">
-    <input type="checkbox">
-    <span>Check decks, fences and other structures</span>
-  </label>
+    <label class="checklist-item">
+      <span>Timber</span>
+      <input type="text" list="timberOptions" placeholder="Select or type...">
+      <datalist id="timberOptions">
+        <option value="Good">
+        <option value="Weathered">
+        <option value="Rot suspected">
+        <option value="Repairs required">
+      </datalist>
+    </label>
+
+    <label class="checklist-item">
+      <span>Moisture</span>
+      <input type="text" list="moistureOptions" placeholder="Select or type...">
+      <datalist id="moistureOptions">
+        <option value="None visible">
+        <option value="Mould">
+        <option value="Algae">
+        <option value="Damp">
+        <option value="Water staining">
+      </datalist>
+    </label>
+
+    <label class="checklist-item">
+      <span>Access</span>
+      <input type="text" list="accessOptions" placeholder="Select or type...">
+      <datalist id="accessOptions">
+        <option value="Easy access">
+        <option value="Ladder required">
+        <option value="Scaffolding required">
+        <option value="High level access">
+        <option value="Special access">
+      </datalist>
+    </label>
+
+    <label class="checklist-item">
+      <span>Windows, doors & trims</span>
+      <input type="text" list="trimOptions" placeholder="Select or type...">
+      <datalist id="trimOptions">
+        <option value="Good condition">
+        <option value="Preparation required">
+        <option value="Repair required">
+        <option value="Rot suspected">
+        <option value="Other">
+      </datalist>
+    </label>
+
+    <label class="checklist-item">
+      <span>Decks & fences</span>
+      <input type="text" list="structureOptions" placeholder="Select or type...">
+      <datalist id="structureOptions">
+        <option value="Not applicable">
+        <option value="Good condition">
+        <option value="Preparation required">
+        <option value="Repairs required">
+        <option value="Other">
+      </datalist>
+    </label>
+
+  </div>
 
 </div>
-
-          </div>
-
-
-          <!-- ==========================================
-     5. PHOTO ASSESSMENT
-     ========================================== -->
 
 <div class="report-card photo-assessment">
 
@@ -533,27 +608,27 @@
   <div class="photo-checks">
 
     <label class="checklist-item">
-      <input type="checkbox">
+      <input type="text">
       <span>Exterior walls</span>
     </label>
 
     <label class="checklist-item">
-      <input type="checkbox">
+      <input type="text">
       <span>Windows, doors & trims</span>
     </label>
 
     <label class="checklist-item">
-      <input type="checkbox">
+      <input type="text">
       <span>Decks, fences & structures</span>
     </label>
 
     <label class="checklist-item">
-      <input type="checkbox">
+      <input type="text">
       <span>Problem areas / damage</span>
     </label>
 
     <label class="checklist-item">
-      <input type="checkbox">
+      <input type="text">
       <span>High-level / difficult access</span>
     </label>
 
