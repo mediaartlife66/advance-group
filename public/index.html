@@ -3,236 +3,592 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Advance Group | Property Intelligence</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="site-header">
+
   <div class="container header-inner">
-    <div class="logo">ADVANCE GROUP</div>
-    <div class="header-label">FIELD INTELLIGENCE</div>
+
+    <div class="logo">
+      ADVANCE GROUP
+    </div>
+
+    <div class="header-label">
+      FIELD INTELLIGENCE
+    </div>
+
   </div>
+
 </header>
+
 
 <main>
 
-<section class="hero">
-  <div class="container hero-content">
+  <!-- HERO -->
 
-    <p class="eyebrow">ADVANCE GROUP</p>
+  <section class="hero">
 
-    <h1>
-      Know the job.<br>
-      <span>Before you start it.</span>
-    </h1>
+    <div class="container hero-content">
 
-    <p class="hero-text">
-      A faster way for tradies to assess a property, capture the site,
-      understand the work and prepare the next step.
-    </p>
-
-    <a href="#assessment" class="button primary">
-      START SITE ASSESSMENT →
-    </a>
-
-  </div>
-</section>
-
-
-<section id="assessment" class="assessment">
-
-  <div class="container">
-
-    <div class="section-heading">
-      <p class="eyebrow">SITE ASSESSMENT</p>
-      <h2>What trade are you doing?</h2>
-      <p>Select your trade, enter the property and start the assessment.</p>
-    </div>
-
-
-    <!-- TRADE -->
-
-    <div class="trade-selector">
-
-      <button type="button" class="trade-button active">
-        🎨 Painting
-      </button>
-
-      <button type="button" class="trade-button">
-        🏠 Building
-      </button>
-
-      <button type="button" class="trade-button">
-        ⚡ Electrical
-      </button>
-
-      <button type="button" class="trade-button">
-        💧 Plumbing
-      </button>
-
-      <button type="button" class="trade-button">
-        🌳 Landscaping
-      </button>
-
-      <button type="button" class="trade-button">
-        ＋ Other Trade
-      </button>
-
-    </div>
-
-
-    <!-- PROPERTY -->
-
-    <div class="property-card">
-
-      <p class="card-label">PROPERTY</p>
-
-      <label for="propertyAddress">
-        Property address
-      </label>
-
-      <input
-        id="propertyAddress"
-        name="propertyAddress"
-        type="text"
-        placeholder="Start typing the property address..."
-        autocomplete="street-address"
-      >
-
-      <p class="address-helper">
-        Choose a suggestion or enter the address manually.
+      <p class="eyebrow">
+        ADVANCE GROUP
       </p>
 
+      <h1>
+        Know the job.<br>
+        <span>Before you start it.</span>
+      </h1>
+
+      <p class="hero-text">
+        A faster way for tradies to assess a property, capture the site,
+        understand the work and prepare the next step.
+      </p>
+
+      <a
+        href="#assessment"
+        class="button primary"
+      >
+        START SITE ASSESSMENT →
+      </a>
+
     </div>
 
+  </section>
 
-    <!-- PHOTO ASSESSMENT -->
 
-    <div class="photo-card">
+  <!-- ASSESSMENT -->
 
-      <div class="card-top">
+  <section
+    id="assessment"
+    class="assessment"
+  >
 
-        <div>
-          <p class="card-label">PHOTO ASSESSMENT</p>
-          <h3>Capture the site</h3>
-          <p>
-            Take photos outside in the field or add photos from your phone.
-          </p>
+    <div class="container">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          SITE ASSESSMENT
+        </p>
+
+        <h2>
+          What trade are you doing?
+        </h2>
+
+        <p>
+          Select your trade, enter the property and start the assessment.
+        </p>
+
+      </div>
+
+
+      <!-- TRADE -->
+
+      <div class="trade-selector">
+
+        <button
+          type="button"
+          class="trade-button active"
+        >
+          🎨 Painting
+        </button>
+
+        <button
+          type="button"
+          class="trade-button"
+        >
+          🏠 Building
+        </button>
+
+        <button
+          type="button"
+          class="trade-button"
+        >
+          ⚡ Electrical
+        </button>
+
+        <button
+          type="button"
+          class="trade-button"
+        >
+          💧 Plumbing
+        </button>
+
+        <button
+          type="button"
+          class="trade-button"
+        >
+          🌳 Landscaping
+        </button>
+
+        <button
+          type="button"
+          class="trade-button"
+        >
+          ＋ Other Trade
+        </button>
+
+      </div>
+
+
+      <!-- PROPERTY -->
+
+      <div class="property-card">
+
+        <p class="card-label">
+          PROPERTY
+        </p>
+
+        <label for="propertyAddress">
+          Property address
+        </label>
+
+        <input
+          id="propertyAddress"
+          name="propertyAddress"
+          type="text"
+          placeholder="Start typing the property address..."
+          autocomplete="street-address"
+        >
+
+        <p class="address-helper">
+          Choose a suggestion or enter the address manually.
+        </p>
+
+      </div>
+
+
+      <!-- PHOTO ASSESSMENT -->
+
+      <div class="photo-card">
+
+        <div class="card-top">
+
+          <div>
+
+            <p class="card-label">
+              PHOTO ASSESSMENT
+            </p>
+
+            <h3>
+              Capture the site
+            </h3>
+
+            <p>
+              Take photos outside in the field or add photos from your phone.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="photo-actions">
+
+          <label class="photo-button">
+
+            📷
+
+            <span>
+              TAKE PHOTOS
+            </span>
+
+            <input
+              id="cameraInput"
+              type="file"
+              accept="image/*"
+              capture="environment"
+              hidden
+            >
+
+          </label>
+
+
+          <label class="photo-button secondary-photo">
+
+            🖼️
+
+            <span>
+              ADD PHOTOS
+            </span>
+
+            <input
+              id="photoInput"
+              type="file"
+              accept="image/*"
+              multiple
+              hidden
+            >
+
+          </label>
+
+        </div>
+
+
+        <div
+          id="photoPreview"
+          class="photo-preview"
+        ></div>
+
+
+        <button
+          id="analyseButton"
+          class="analyse-button"
+          type="button"
+        >
+
+          <span class="analyse-icon">
+            ✦
+          </span>
+
+          ANALYSE PROPERTY
+
+        </button>
+
+
+        <div
+          id="analysisStatus"
+          class="analysis-status hidden"
+        >
+          ANALYSING PROPERTY...
         </div>
 
       </div>
 
 
-      <div class="photo-actions">
+      <!-- SITE OBSERVATIONS -->
 
-        <label class="photo-button">
-          📷
-          <span>TAKE PHOTOS</span>
-          <input
-            id="cameraInput"
-            type="file"
-            accept="image/*"
-            capture="environment"
-            hidden
+      <section class="assessment-card">
+
+        <p class="card-label">
+          SITE OBSERVATIONS
+        </p>
+
+        <h3>
+          What did you notice?
+        </h3>
+
+        <p class="small-help">
+          Select the closest description or type your own note.
+        </p>
+
+
+        <div class="suggestion-list">
+
+          <button
+            type="button"
+            class="suggestion-btn"
           >
+            Surface looks weathered
+          </button>
+
+          <button
+            type="button"
+            class="suggestion-btn"
+          >
+            Paint peeling or flaking
+          </button>
+
+          <button
+            type="button"
+            class="suggestion-btn"
+          >
+            Cracks or damaged surfaces
+          </button>
+
+          <button
+            type="button"
+            class="suggestion-btn"
+          >
+            Mould, algae or moisture
+          </button>
+
+          <button
+            type="button"
+            class="suggestion-btn"
+          >
+            Timber deterioration
+          </button>
+
+          <button
+            type="button"
+            class="suggestion-btn"
+          >
+            Access or height issue
+          </button>
+
+        </div>
+
+
+        <label class="custom-observation">
+
+          <span>
+            OTHER OBSERVATION
+          </span>
+
+          <input
+            type="text"
+            id="customObservation"
+            placeholder="Type your observation..."
+          >
+
         </label>
 
-        <label class="photo-button secondary-photo">
-          🖼️
-          <span>ADD PHOTOS</span>
-          <input
-            id="photoInput"
-            type="file"
-            accept="image/*"
-            multiple
-            hidden
-          >
-        </label>
-
-      </div>
+      </section>
 
 
-      <div id="photoPreview" class="photo-preview"></div>
+      <!-- PROPERTY REPORT -->
 
-
-      <button
-        id="analyseButton"
-        class="analyse-button"
-        type="button"
+      <section
+        id="propertyReport"
+        class="property-report hidden"
       >
-        <span class="analyse-icon">✦</span>
-        ANALYSE PROPERTY
-      </button>
 
-      <div id="analysisStatus" class="analysis-status hidden">
-        ANALYSING PROPERTY...
-      </div>
+        <div class="report-header">
+
+          <div>
+
+            <p class="eyebrow">
+              PROPERTY INTELLIGENCE
+            </p>
+
+            <h2>
+              Property analysis
+            </h2>
+
+            <p>
+              Initial field assessment generated from the information captured.
+            </p>
+
+          </div>
+
+          <div class="report-badge">
+            ANALYSIS READY
+          </div>
+
+        </div>
+
+
+        <!-- REPORT SUMMARY -->
+
+        <div class="report-summary">
+
+          <div>
+
+            <span>
+              PROPERTY
+            </span>
+
+            <strong id="reportAddress">
+              Not entered
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              TRADE
+            </span>
+
+            <strong id="reportTrade">
+              Painting
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              PHOTOS
+            </span>
+
+            <strong id="reportPhotoCount">
+              0 photos
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- REPORT GRID -->
+
+        <div class="report-grid">
+
+
+          <div class="report-card">
+
+            <p class="card-kicker">
+              PROPERTY CONDITION
+            </p>
+
+            <h3>
+              Initial assessment
+            </h3>
+
+            <p>
+              Review the property surfaces carefully before preparation,
+              materials and labour are confirmed.
+            </p>
+
+            <div class="data-list">
+
+              <div>
+                <span>
+                  Surface condition
+                </span>
+
+                <strong>
+                  Requires inspection
+                </strong>
+              </div>
+
+
+              <div>
+                <span>
+                  Preparation
+                </span>
+
+                <strong>
+                  To be confirmed
+                </strong>
+              </div>
+
+
+              <div>
+                <span>
+                  Access
+                </span>
+
+                <strong>
+                  Site assessment required
+                </strong>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="report-card">
+
+            <p class="card-kicker">
+              FIELD NOTES
+            </p>
+
+            <h3>
+              Observations
+            </h3>
+
+            <div class="observation-grid">
+
+              <div class="observation">
+
+                <span>
+                  SURFACE
+                </span>
+
+                <strong>
+                  Inspect
+                </strong>
+
+                <p>
+                  Check for weathering, peeling and surface failure.
+                </p>
+
+              </div>
+
+
+              <div class="observation">
+
+                <span>
+                  MOISTURE
+                </span>
+
+                <strong>
+                  Inspect
+                </strong>
+
+                <p>
+                  Look for mould, algae, dampness and water damage.
+                </p>
+
+              </div>
+
+
+              <div class="observation">
+
+                <span>
+                  ACCESS
+                </span>
+
+                <strong>
+                  Inspect
+                </strong>
+
+                <p>
+                  Confirm ladders, scaffolding and high-level access.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="report-card large">
+
+            <p class="card-kicker">
+              NEXT STEP
+            </p>
+
+            <h3>
+              Complete the site inspection before preparing the quotation.
+            </h3>
+
+            <p>
+              Use the captured photos and field observations to confirm
+              preparation, access, materials, labour and project requirements.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </section>
 
     </div>
 
+  </section>
 
-    <!-- SITE OBSERVATIONS -->
-
-<section class="assessment-card">
-
-  <p class="card-label">SITE OBSERVATIONS</p>
-
-  <h3>What did you notice?</h3>
-
-  <p class="small-help">
-    Select the closest description or type your own note.
-  </p>
-
-  <div class="suggestion-list">
-
-    <button type="button" class="suggestion-btn">
-      Surface looks weathered
-    </button>
-
-    <button type="button" class="suggestion-btn">
-      Paint peeling or flaking
-    </button>
-
-    <button type="button" class="suggestion-btn">
-      Cracks or damaged surfaces
-    </button>
-
-    <button type="button" class="suggestion-btn">
-      Mould, algae or moisture
-    </button>
-
-    <button type="button" class="suggestion-btn">
-      Timber deterioration
-    </button>
-
-    <button type="button" class="suggestion-btn">
-      Access or height issue
-    </button>
-
-  </div>
-
-  <label class="custom-observation">
-    <span>OTHER OBSERVATION</span>
-
-    <input
-      type="text"
-      id="customObservation"
-      placeholder="Type your observation..."
-    >
-  </label>
-
-</section>
-
-</section>
 </main>
 
+
 <footer>
+
   <div class="container footer-inner">
-    <span>ADVANCE GROUP</span>
-    <span>PROPERTY INTELLIGENCE</span>
+
+    <span>
+      ADVANCE GROUP
+    </span>
+
+    <span>
+      PROPERTY INTELLIGENCE
+    </span>
+
   </div>
+
 </footer>
 
 
