@@ -1,3 +1,5 @@
+import { getPropertyData } from "./services/property-data.js";
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -27,33 +29,33 @@ export default {
           );
         }
 
+        const result = await getPropertyData(
+          address,
+          env.LINZ_API_KEY
+        );
+
         return new Response(
-          JSON.stringify({
-            address,
-            status: "ready",
-            message: "Property address received.",
-            sources: [],
-            property: {
-              address,
-              council: "Pending public data lookup",
-              propertyType: "Pending",
-              yearBuilt: "Pending",
-              landArea: "Pending",
-              floorArea: "Pending"
-            }
-          }),
+          JSON.stringify(result),
           {
-            status: 200,
-            headers: { "Content-Type": "application/json" }
+            status: result.validation?.valid ? 200 : 400,
+            headers: {
+              "Content-Type": "application/json"
+            }
           }
         );
 
       } catch (error) {
+        console.error("Property report error:", error);
+
         return new Response(
-          JSON.stringify({ error: "Invalid request" }),
+          JSON.stringify({
+            error: "Property intelligence service failed."
+          }),
           {
-            status: 400,
-            headers: { "Content-Type": "application/json" }
+            status: 500,
+            headers: {
+              "Content-Type": "application/json"
+            }
           }
         );
       }
