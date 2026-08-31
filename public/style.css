@@ -745,3 +745,176 @@ footer {
   line-height: 1.4;
   opacity: 0.65;
 }
+/* STREETKIT ADDRESS SUGGESTIONS FIX */
+
+#propertyAddress {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Keep StreetKit suggestion rows aligned */
+.streetkit-suggestion,
+.streetkit-result,
+.streetkit-address,
+.streetkit-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Checkbox / selection control */
+.streetkit-suggestion input[type="checkbox"],
+.streetkit-result input[type="checkbox"],
+.streetkit-address input[type="checkbox"],
+.streetkit-option input[type="checkbox"] {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin: 0 12px 0 0;
+  vertical-align: middle;
+}
+
+/* Text beside checkbox */
+.streetkit-suggestion label,
+.streetkit-result label,
+.streetkit-address label,
+.streetkit-option label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Prevent address text from jumping beside the checkbox */
+.streetkit-suggestion span,
+.streetkit-result span,
+.streetkit-address span,
+.streetkit-option span {
+  line-height: 1.4;
+}
+
+/* Keep suggestion box visually clean */
+.streetkit-suggestions,
+.streetkit-results,
+.streetkit-dropdown {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .streetkit-suggestion,
+  .streetkit-result,
+  .streetkit-address,
+  .streetkit-option {
+    min-height: 44px;
+  }
+}
+
+
+
+
+.tradie-checklist .checklist-item {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+.tradie-checklist .checklist-item input[type="checkbox"] {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0 0;
+  padding: 0;
+}
+
+.tradie-checklist .checklist-item span {
+  display: block;
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+}
+
+/* ==========================================
+   TRADIE SITE VISIT CHECKLIST
+   ========================================== */
+
+.tradie-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.tradie-checklist .checklist-item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+.tradie-checklist .checklist-item input[type="checkbox"] {
+  display: block;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.tradie-checklist .checklist-item span {
+  display: block;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+}
+/* TRADIE CHECKLIST FINAL FIX */
+.tradie-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tradie-checklist .checklist-item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.tradie-checklist .checklist-item input[type="checkbox"] {
+  display: block !important;
+  flex: 0 0 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.tradie-checklist .checklist-item span {
+  display: block !important;
+  flex: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
