@@ -17,21 +17,38 @@ export default {
 
       try {
         const body = await request.json();
+
         const address = String(body.address || "").trim();
+
+        const latitude =
+          body.latitude !== undefined
+            ? Number(body.latitude)
+            : null;
+
+        const longitude =
+          body.longitude !== undefined
+            ? Number(body.longitude)
+            : null;
 
         if (!address) {
           return new Response(
-            JSON.stringify({ error: "Property address is required" }),
+            JSON.stringify({
+              error: "Property address is required"
+            }),
             {
               status: 400,
-              headers: { "Content-Type": "application/json" }
+              headers: {
+                "Content-Type": "application/json"
+              }
             }
           );
         }
 
         const result = await getPropertyData(
           address,
-          env.LINZ_API_KEY
+          env.LINZ_API_KEY,
+          latitude,
+          longitude
         );
 
         return new Response(
@@ -45,11 +62,15 @@ export default {
         );
 
       } catch (error) {
-        console.error("Property report error:", error);
+        console.error(
+          "Property report error:",
+          error
+        );
 
         return new Response(
           JSON.stringify({
-            error: "Property intelligence service failed."
+            error:
+              "Property intelligence service failed."
           }),
           {
             status: 500,

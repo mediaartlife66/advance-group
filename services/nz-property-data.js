@@ -2,11 +2,10 @@ const LINZ_WFS_URL =
   "https://data.linz.govt.nz/services;key=";
 
 const ADDRESS_LAYER =
-  "data.linz.govt.nz:layer-123113";
+  "layer-123113";
 
 const PARCEL_LAYER =
-  "data.linz.govt.nz:layer-50772";
-
+  "layer-50772";
 
 export async function getNZPropertyData(
   address,
@@ -78,7 +77,7 @@ export async function getNZPropertyData(
             "application/json",
 
           cql_filter:
-            `full_address ILIKE '%${safeAddress}%'`,
+  `full_address ILIKE '${safeAddress}'`,
 
           count: "10"
 
@@ -87,6 +86,11 @@ export async function getNZPropertyData(
 
       const addressUrl =
         `${LINZ_WFS_URL}${encodeURIComponent(apiKey)}/wfs?${addressParams}`;
+
+console.log(
+  "LINZ ADDRESS URL:",
+  addressUrl.replace(encodeURIComponent(apiKey), "[API_KEY]")
+);
 
 
       console.log(
@@ -335,30 +339,30 @@ export async function getNZPropertyData(
     );
 
 
-    const parcelParams =
-      new URLSearchParams({
+const parcelParams =
+  new URLSearchParams({
 
-        service: "WFS",
+    service: "WFS",
 
-        version: "2.0.0",
+    version: "2.0.0",
 
-        request: "GetFeature",
+    request: "GetFeature",
 
-        typeNames: PARCEL_LAYER,
+    typeNames: PARCEL_LAYER,
 
-        outputFormat:
-          "application/json",
+    outputFormat:
+      "application/json",
 
-        srsName:
-          "EPSG:4326",
+    srsName:
+      "EPSG:4167",
 
-        bbox:
-          `${finalLongitude - 0.0003},${finalLatitude - 0.0003},${finalLongitude + 0.0003},${finalLatitude + 0.0003},EPSG:4326`,
+    cql_filter:
+      `Intersects(shape,POINT(${finalLatitude} ${finalLongitude}))`,
 
-        count:
-          "20"
+    count:
+      "20"
 
-      });
+  });
 
 
     const parcelUrl =

@@ -69,39 +69,23 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
     onSelect(address) {
+  selectedStreetKitAddress = address;
 
-      selectedStreetKitAddress =
-        address;
+  console.log("STREETKIT SELECTED ADDRESS:", address);
 
+  addressInput.value =
+    address.label ||
+    address.fullAddress ||
+    address.address ||
+    "";
 
-      addressInput.value =
-        address.label;
+  const coords =
+    address.location ||
+    address.coordinates ||
+    address.geometry?.coordinates;
 
-
-      console.log(
-        "StreetKit selected address:",
-        address
-      );
-
-    },
-
-
-    onClear() {
-
-      selectedStreetKitAddress =
-        null;
-
-    },
-
-
-    onError(error) {
-
-      console.warn(
-        "StreetKit error:",
-        error
-      );
-
-    }
+  console.log("STREETKIT COORDINATES:", coords);
+},
 
   });
 

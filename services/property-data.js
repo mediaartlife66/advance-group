@@ -1,5 +1,6 @@
 import { getNZPropertyData } from "./nz-property-data.js";
 import { validateNZAddress } from "./nz-address-validation.js";
+import { createPropertyRecord } from "./property-record.js";
 
 export async function getPropertyData(
   address,
@@ -7,58 +8,40 @@ export async function getPropertyData(
   latitude = null,
   longitude = null
 ) {
-
-  const validation =
-    validateNZAddress(address);
-
+  const validation = validateNZAddress(address);
 
   if (!validation.valid) {
-
     return {
-
-      address:
-        validation.address,
-
+      address: validation.address,
       sources: [],
-
       data: {},
-
-      status:
-        validation.status,
-
+      status: validation.status,
       validation
-
     };
-
   }
 
+  const nzData = await getNZPropertyData(
+    validation.address,
+    apiKey,
+    latitude,
+    longitude
+  );
 
-  const nzData =
-    await getNZPropertyData(
-      validation.address,
-      apiKey,
-      latitude,
-      longitude
-    );
-
+  const propertyRecord = createPropertyRecord(nzData);
 
   return {
-
-    address:
-      validation.address,
+    address: validation.address,
 
     sources: [
       nzData.source
     ],
 
-    data:
-      nzData.data,
+    data: nzData.data,
 
-    status:
-      nzData.source.status,
+    propertyRecord,
+
+    status: nzData.source.status,
 
     validation
-
   };
-
 }
