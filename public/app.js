@@ -20,32 +20,54 @@ PROPERTY REPORT
 */
 
 if (propertyForm) {
-  propertyForm.addEventListener("submit", (event) => {
-
+  propertyForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const address =
-      document.getElementById("propertyAddress").value.trim();
-
-    if (!address) {
-      return;
-    }
+    const address = document.getElementById("propertyAddress").value.trim();
+    if (!address) return;
 
     reportAddress.textContent = address;
-
-    reportStatus.textContent =
-      "Initial property assessment ready";
-
-    reportSources.textContent =
-      "Public NZ property information";
-
+    reportStatus.textContent = "Looking up official LINZ data...";
+    reportSources.textContent = "LINZ Data Service";
     propertyReport.classList.remove("hidden");
+    propertyReport.scrollIntoView({ behavior: "smooth", block: "start" });
 
-    propertyReport.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+    try {
+      const response = await fetch("/api/property-report", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ address })
+      });
 
+      const report = await response.json();
+
+      if (!response.ok || report.status === "error") {
+        reportStatus.textContent = report.message || "Property lookup failed.";
+        reportSources.textContent = "LINZ Data Service";
+        return;
+      }
+
+      const property = report.property || {};
+
+      reportAddress.textContent = property.address || address;
+      reportStatus.textContent =
+        report.status === "ready"
+          ? "Official LINZ address found"
+          : (report.message || report.status);
+
+      const location = [property.suburb, property.city]
+        .filter(Boolean)
+        .join(", ");
+
+      reportSources.textContent =
+        location
+          ? `LINZ Data Service • ${location}`
+          : "LINZ Data Service";
+    } catch (error) {
+      console.error("Property report error:", error);
+      reportStatus.textContent = "Unable to connect to the property report service.";
+      reportSources.textContent = "LINZ Data Service";
+    }
   });
 }
 
